@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>购买专业版 — DeepSeal</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Noto+Sans+SC:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/css/style.css" />
+  <style>
+    .buy-page{max-width:600px;margin:0 auto;padding:120px 24px 80px}
+    .buy-page h1{font-size:32px;font-weight:800;margin-bottom:8px;color:#0f172a}
+    .buy-page .subtitle{color:#64748b;margin-bottom:40px;font-size:16px}
+    .step-label{font-size:13px;font-weight:600;color:#6366F1;text-transform:uppercase;letter-spacing:1px;margin-bottom:8px}
+    .step-box{background:#fff;border:1.5px solid #e2e8f0;border-radius:12px;padding:24px;margin-bottom:32px}
+    .plan-cards{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+    .plan-card{border:2px solid #e2e8f0;border-radius:12px;padding:24px;cursor:pointer;transition:all .2s;text-align:center;position:relative}
+    .plan-card:hover{border-color:#6366F1;box-shadow:0 4px 16px rgba(99,102,241,0.12)}
+    .plan-card.selected{border-color:#6366F1;background:#f5f3ff}
+    .plan-card .price{font-size:36px;font-weight:800;color:#0f172a}
+    .plan-card .price small{font-size:14px;font-weight:500;color:#94a3b8}
+    .plan-card .period{font-size:14px;color:#64748b;margin-top:4px}
+    .plan-card .badge{position:absolute;top:-10px;right:-8px;background:#6366F1;color:#fff;font-size:11px;font-weight:700;padding:3px 10px;border-radius:10px}
+    .machine-input{width:100%;padding:14px 16px;border:1.5px solid #e2e8f0;border-radius:10px;font-size:15px;font-family:'JetBrains Mono','Noto Sans SC',monospace;outline:none;transition:border .2s;box-sizing:border-box}
+    .machine-input:focus{border-color:#6366F1;box-shadow:0 0 0 3px rgba(99,102,241,0.1)}
+    .machine-hint{font-size:13px;color:#94a3b8;margin-top:8px}
+    .btn-pay{width:100%;padding:16px;font-size:16px;font-weight:700;border:none;border-radius:10px;cursor:pointer;transition:all .2s;display:flex;align-items:center;justify-content:center;gap:8px}
+    .btn-pay-wechat{background:#07C160;color:#fff}
+    .btn-pay-wechat:hover{background:#06ad56;transform:translateY(-1px)}
+    .btn-pay-alipay{background:#1677FF;color:#fff}
+    .btn-pay-alipay:hover{background:#0e5fd9;transform:translateY(-1px)}
+    .btn-pay:disabled{opacity:0.5;cursor:not-allowed;transform:none}
+    .pay-methods{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+    .error-msg{color:#ef4444;font-size:14px;margin-top:8px;display:none}
+    .loading{display:inline-block;width:18px;height:18px;border:2px solid rgba(255,255,255,0.3);border-top-color:#fff;border-radius:50%;animation:spin .6s linear infinite}
+    @keyframes spin{to{transform:rotate(360deg)}}
+  </style>
+</head>
+<body>
+
+<nav class="nav scrolled" id="nav">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><rect x="3" y="11" width="18" height="11" rx="2.5"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+      <span>DeepSeal</span>
+    </a>
+    <div class="nav-links">
+      <a href="index.html#features">功能</a>
+      <a href="index.html#pricing">定价</a>
+      <a href="index.html#download">下载</a>
+      <a href="help.html">帮助</a>
+    </div>
+    <div class="nav-cta">
+      <a href="index.html#download" class="btn btn-sm btn-primary">免费下载</a>
+    </div>
+    <button class="nav-hamburger" id="hamburger">☰</button>
+  </div>
+</nav>
+
+<div class="buy-page">
+  <h1>升级专业版</h1>
+  <p class="subtitle">解锁全部加密功能，数据主权尽在掌握</p>
+
+  <!-- Step 1: 选择套餐 -->
+  <div class="step-label">Step 1 · 选择套餐</div>
+  <div class="step-box">
+    <div class="plan-cards">
+      <div class="plan-card" data-plan="monthly" onclick="selectPlan('monthly')">
+        <div class="price">¥12<small>/月</small></div>
+        <div class="period">按月订阅</div>
+      </div>
+      <div class="plan-card selected" data-plan="yearly" onclick="selectPlan('yearly')">
+        <div class="badge">推荐</div>
+        <div class="price">¥98<small>/年</small></div>
+        <div class="period">年付省 ¥46</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Step 2: 输入机器码 -->
+  <div class="step-label">Step 2 · 输入机器码</div>
+  <div class="step-box">
+    <input type="text" class="machine-input" id="machineId" placeholder="粘贴你的机器码" autocomplete="off" spellcheck="false" />
+    <p class="machine-hint">打开 DeepSeal → 设置 → 激活专业版 → 复制机器码</p>
+    <p class="error-msg" id="machineError"></p>
+  </div>
+
+  <!-- Step 3: 支付 -->
+  <div class="step-label">Step 3 · 扫码支付</div>
+  <div class="step-box">
+    <div class="pay-methods">
+      <button class="btn-pay btn-pay-wechat" id="btnWechat" onclick="createOrder('wechat')">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M8.691 2.188C3.891 2.188 0 5.476 0 9.53c0 2.212 1.17 4.203 3.002 5.55a.59.59 0 01.213.665l-.39 1.48c-.019.07-.048.141-.048.213 0 .163.13.295.29.295a.326.326 0 00.167-.054l1.903-1.114a.864.864 0 01.717-.098 10.16 10.16 0 002.837.403c.276 0 .543-.027.811-.05-.857-2.578.157-4.972 1.932-6.446 1.703-1.415 3.882-1.98 5.853-1.838-.576-3.583-4.196-6.348-8.596-6.348zM5.785 5.991c.642 0 1.162.529 1.162 1.18a1.17 1.17 0 01-1.162 1.178A1.17 1.17 0 014.623 7.17c0-.651.52-1.18 1.162-1.18zm5.813 0c.642 0 1.162.529 1.162 1.18a1.17 1.17 0 01-1.162 1.178 1.17 1.17 0 01-1.162-1.178c0-.651.52-1.18 1.162-1.18zm3.68 4.025c-3.694 0-6.963 2.507-6.963 5.812 0 3.327 3.269 5.835 6.963 5.835.753 0 1.478-.108 2.164-.312a.71.71 0 01.585.08l1.47.863a.262.262 0 00.135.043.237.237 0 00.236-.238c0-.058-.024-.116-.04-.174l-.3-1.146a.478.478 0 01.173-.543C21.962 19.16 22.9 17.476 22.9 15.828c0-3.305-3.269-5.812-6.622-5.812zm-2.14 3.105c.522 0 .945.43.945.96a.953.953 0 01-.945.96.953.953 0 01-.946-.96c0-.53.424-.96.946-.96zm4.283 0c.522 0 .945.43.945.96a.953.953 0 01-.945.96.953.953 0 01-.946-.96c0-.53.424-.96.946-.96z"/></svg>
+        微信支付
+      </button>
+      <button class="btn-pay btn-pay-alipay" id="btnAlipay" onclick="createOrder('alipay')">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M21.422 15.358c-3.32-1.326-6.092-3.015-6.092-3.015s1.439-2.626 1.852-4.478H13.4V6.236h5.206V5.21H13.4V2.4h-2.33s-.105.024-.105.133v2.676H5.712v1.026h5.253v1.63H7.34v1.026h8.075c-.31 1.18-.976 2.62-1.455 3.375-2.093-.896-4.451-1.563-5.908-1.563C5.174 10.703 3 12.756 3 15.08c0 2.28 2.008 4.192 5.19 4.192 2.696 0 5.078-1.48 6.799-3.564 2.368 1.256 6.416 3.236 6.416 3.236L21.422 15.358zM8.354 17.5c-2.147 0-3.387-1.027-3.387-2.548 0-1.576 1.398-2.572 3.443-2.572 1.503 0 3.207.488 4.819 1.437C11.814 16.268 10.186 17.5 8.354 17.5z"/></svg>
+        支付宝
+      </button>
+    </div>
+    <p class="error-msg" id="payError"></p>
+  </div>
+</div>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand-col">
+        <div class="footer-brand">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#6366F1" stroke-width="2.2"><rect x="3" y="11" width="18" height="11" rx="2.5"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+          <span>DeepSeal</span>
+        </div>
+        <p class="footer-desc">本地加密 · 零信任架构<br/>你的隐私只有你说了算。</p>
+        <p class="footer-domain">hypergrad.cn</p>
+      </div>
+      <div class="footer-col">
+        <h4>产品</h4>
+        <a href="index.html#features">功能特性</a>
+        <a href="index.html#security">加密架构</a>
+        <a href="index.html#download">下载</a>
+        <a href="changelog.html">更新日志</a>
+      </div>
+      <div class="footer-col">
+        <h4>资源</h4>
+        <a href="blog.html">博客</a>
+        <a href="help.html">帮助中心</a>
+        <a href="security-whitepaper.html">安全白皮书</a>
+      </div>
+      <div class="footer-col">
+        <h4>公司</h4>
+        <a href="about.html">关于我们</a>
+        <a href="contact.html">联系我们</a>
+      </div>
+      <div class="footer-col">
+        <h4>法律</h4>
+        <a href="privacy.html">隐私政策</a>
+        <a href="terms.html">服务条款</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 DeepSeal by HyperGrad</span>
+      <span>hypergrad.cn</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+// ====== 配置（部署后替换） ======
+const API_BASE = 'https://deepseal-pay.你的用户名.workers.dev';
+
+let selectedPlan = 'yearly';
+
+function selectPlan(plan) {
+  selectedPlan = plan;
+  document.querySelectorAll('.plan-card').forEach(el => {
+    el.classList.toggle('selected', el.dataset.plan === plan);
+  });
+}
+
+async function createOrder(payMethod) {
+  const machineId = document.getElementById('machineId').value.trim();
+  const payError = document.getElementById('payError');
+  const machineError = document.getElementById('machineError');
+  const btn = payMethod === 'wechat' ? document.getElementById('btnWechat') : document.getElementById('btnAlipay');
+
+  payError.style.display = 'none';
+  machineError.style.display = 'none';
+
+  if (!machineId) {
+    machineError.textContent = '请先输入机器码';
+    machineError.style.display = 'block';
+    return;
+  }
+
+  if (!/^[a-fA-F0-9\-]{8,64}$/.test(machineId)) {
+    machineError.textContent = '机器码格式不正确，请从 DeepSeal 应用中复制';
+    machineError.style.display = 'block';
+    return;
+  }
+
+  // 禁用按钮
+  const btns = document.querySelectorAll('.btn-pay');
+  btns.forEach(b => { b.disabled = true; b.style.opacity = '0.6'; });
+  btn.innerHTML = '<span class="loading"></span> 正在创建订单...';
+
+  try {
+    const resp = await fetch(API_BASE + '/api/create-order', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ machineId, plan: selectedPlan }),
+    });
+
+    const data = await resp.json();
+
+    if (data.error) {
+      payError.textContent = data.error;
+      payError.style.display = 'block';
+      btn.innerHTML = payMethod === 'wechat' ? '微信支付' : '支付宝';
+      btns.forEach(b => { b.disabled = false; b.style.opacity = '1'; });
+      return;
+    }
+
+    // 跳转到支付页面
+    window.location.href = data.payUrl;
+  } catch (err) {
+    payError.textContent = '网络错误，请稍后重试';
+    payError.style.display = 'block';
+    btn.innerHTML = payMethod === 'wechat' ? '微信支付' : '支付宝';
+    btns.forEach(b => { b.disabled = false; b.style.opacity = '1'; });
+  }
+}
+</script>
+</body>
+</html>
