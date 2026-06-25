@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>帮助中心 — DeepSeal</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Noto+Sans+SC:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/css/style.css" />
+</head>
+<body>
+
+<nav class="nav scrolled" id="nav">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><rect x="3" y="11" width="18" height="11" rx="2.5"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+      <span>DeepSeal</span>
+    </a>
+    <div class="nav-links">
+      <div class="nav-dropdown">
+        <button class="nav-dropdown-trigger">产品 <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg></button>
+        <div class="nav-dropdown-menu">
+          <a href="index.html#security">加密架构</a>
+          <a href="index.html#features">功能特性</a>
+          <a href="changelog.html">更新日志</a>
+          <a href="roadmap.html">路线图</a>
+        </div>
+      </div>
+      <div class="nav-dropdown">
+        <button class="nav-dropdown-trigger">解决方案 <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg></button>
+        <div class="nav-dropdown-menu">
+          <a href="solutions.html">个人用户</a>
+          <a href="solutions.html#enterprise">企业团队</a>
+          <a href="solutions.html#developer">开发者</a>
+        </div>
+      </div>
+      <a href="index.html#pricing">定价</a>
+      <div class="nav-dropdown">
+        <button class="nav-dropdown-trigger">资源 <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg></button>
+        <div class="nav-dropdown-menu">
+          <a href="blog.html">博客</a>
+          <a href="help.html">帮助中心</a>
+          <a href="security-whitepaper.html">安全白皮书</a>
+          <a href="docs.html">API 文档</a>
+        </div>
+      </div>
+      <a href="about.html">关于</a>
+    </div>
+    <div class="nav-cta">
+      <a href="index.html#download" class="btn btn-sm btn-ghost">下载</a>
+      <a href="index.html#pricing" class="btn btn-sm btn-primary">升级专业版</a>
+    </div>
+    <button class="nav-hamburger" id="hamburger"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+
+<div class="mobile-nav" id="mobileNav">
+  <a href="index.html#security">加密架构</a>
+  <a href="index.html#features">功能特性</a>
+  <a href="index.html#pricing" style="font-weight:600;">定价</a>
+  <a href="blog.html">博客</a>
+  <a href="about.html">关于</a>
+  <a href="index.html#download" class="btn btn-primary" style="margin-top:8px;text-align:center;">免费下载</a>
+</div>
+
+<section class="section" style="padding-top:120px">
+  <div class="container" style="text-align:left;max-width:720px">
+    <div class="section-eyebrow">帮助中心</div>
+    <h1 class="section-title" style="text-align:left">常见问题</h1>
+    <p style="font-size:15px;color:var(--text-secondary);line-height:1.8;margin-bottom:40px">以下是用户最常问到的问题。如果没有找到答案，欢迎通过社区反馈。</p>
+
+    <div class="blog-list">
+      <div class="blog-card">
+        <h3>如何设置主密码？</h3>
+        <p>首次启动 DeepSeal 时，应用会引导你设置主密码。主密码是解锁所有加密内容的唯一凭证，请务必牢记。建议使用 12 位以上的混合字符密码，或使用密码短语（如一句有意义的话）以提高可记忆性和安全性。主密码不会存储在设备上，也无法通过网络传输。</p>
+      </div>
+
+      <div class="blog-card">
+        <h3>忘记主密码怎么办？</h3>
+        <p> DeepSeal 采用零知识架构，我们不存储你的主密码，也无法帮您恢复。如果忘记主密码，你将无法解密已加密的内容。这是为了确保即使设备被盗，数据也无法被破解。建议将主密码记录在安全的物理位置（如纸质备忘录），或使用密码管理器存储。</p>
+      </div>
+
+      <div class="blog-card">
+        <h3>加密块是什么？</h3>
+        <p>加密块（Encrypted Block）是 DeepSeal 的核心加密单元。你可以在笔记中选择性地将敏感段落标记为加密块，这些段落会被独立的 256-bit 密钥加密。未标记的部分保持明文，方便全文搜索和快速浏览。加密块在锁定状态下显示为不可读的密文，只有输入主密码解锁后才能查看原文。</p>
+      </div>
+
+      <div class="blog-card">
+        <h3>如何分享加密内容？</h3>
+        <p>你可以将笔记导出为 SNX 加密文件，接收方使用 DeepSeal 导入并输入预设的共享密码即可解密。导出时可以设置独立的共享密码，不暴露你的主密码。协作编辑功能正在开发中，预计 2026 Q3 上线。</p>
+      </div>
+
+      <div class="blog-card">
+        <h3>如何导出加密笔记？</h3>
+        <p>DeepSeal 支持两种导出方式：<strong>加密导出</strong> — 导出为 SNX 格式文件，内容保持加密状态，需要密码才能解密；<strong>明文导出</strong> — 导出为 Markdown 文件，需要先解锁应用。建议优先使用加密导出以保护隐私。也可以通过 CLI 工具执行批量导出：<code style="background:var(--bg-code);padding:2px 6px;border-radius:4px;font-size:13px">deepseal-cli export --format snx</code></p>
+      </div>
+
+      <div class="blog-card">
+        <h3>支持哪些平台？</h3>
+        <p>目前 DeepSeal 支持以下桌面平台：Windows 10/11（x64 和 ARM64）、macOS 12+（Intel 和 Apple Silicon）、Linux（x64，支持 Ubuntu 20.04+ 和 Fedora 36+）。移动端（iOS / Android）正在开发中，预计 2026 Q4 发布。</p>
+      </div>
+
+      <div class="blog-card">
+        <h3>数据存在哪里？</h3>
+        <p>所有数据存储在你设备的本地文件系统中，使用 SQLite 加密数据库。DeepSeal 不会将任何数据上传到云端或远程服务器。你的加密密钥材料同样只存在于本地。即使选择未来开放同步功能，数据在传输过程中也会进行端到端加密，服务器无法读取。</p>
+      </div>
+
+      <div class="blog-card">
+        <h3>是否支持中文？</h3>
+        <p>是的，DeepSeal 完整支持中文界面和中文内容加密。应用界面提供简体中文和 English 两种语言选项，加密引擎对 Unicode 文本完全兼容，中文内容加密后可正常解密还原。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer-bottom" style="border-top:none;padding-top:0">
+      <span>© 2026 DeepSeal by HyperGrad</span>
+      <a href="index.html" style="color:var(--accent-light)">← 返回首页</a>
+    </div>
+  </div>
+</footer>
+
+<script src="assets/js/main.js"></script>
+</body>
+</html>

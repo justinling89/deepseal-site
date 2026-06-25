@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>路线图 — DeepSeal</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Noto+Sans+SC:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/css/style.css" />
+</head>
+<body>
+
+<nav class="nav scrolled" id="nav">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><rect x="3" y="11" width="18" height="11" rx="2.5"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+      <span>DeepSeal</span>
+    </a>
+    <div class="nav-links">
+      <div class="nav-dropdown">
+        <button class="nav-dropdown-trigger">产品 <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg></button>
+        <div class="nav-dropdown-menu">
+          <a href="index.html#security">加密架构</a>
+          <a href="index.html#features">功能特性</a>
+          <a href="changelog.html">更新日志</a>
+          <a href="roadmap.html">路线图</a>
+        </div>
+      </div>
+      <div class="nav-dropdown">
+        <button class="nav-dropdown-trigger">解决方案 <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg></button>
+        <div class="nav-dropdown-menu">
+          <a href="solutions.html">个人用户</a>
+          <a href="solutions.html#enterprise">企业团队</a>
+          <a href="solutions.html#developer">开发者</a>
+        </div>
+      </div>
+      <a href="index.html#pricing">定价</a>
+      <div class="nav-dropdown">
+        <button class="nav-dropdown-trigger">资源 <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg></button>
+        <div class="nav-dropdown-menu">
+          <a href="blog.html">博客</a>
+          <a href="help.html">帮助中心</a>
+          <a href="security-whitepaper.html">安全白皮书</a>
+          <a href="docs.html">API 文档</a>
+        </div>
+      </div>
+      <a href="about.html">关于</a>
+    </div>
+    <div class="nav-cta">
+      <a href="index.html#download" class="btn btn-sm btn-ghost">下载</a>
+      <a href="index.html#pricing" class="btn btn-sm btn-primary">升级专业版</a>
+    </div>
+    <button class="nav-hamburger" id="hamburger"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+
+<div class="mobile-nav" id="mobileNav">
+  <a href="index.html#security">加密架构</a>
+  <a href="index.html#features">功能特性</a>
+  <a href="index.html#pricing" style="font-weight:600;">定价</a>
+  <a href="blog.html">博客</a>
+  <a href="about.html">关于</a>
+  <a href="index.html#download" class="btn btn-primary" style="margin-top:8px;text-align:center;">免费下载</a>
+</div>
+
+<section class="section" style="padding-top:120px">
+  <div class="container" style="text-align:left;max-width:720px">
+    <div class="section-eyebrow">路线图</div>
+    <h1 class="section-title" style="text-align:left">产品路线图</h1>
+    <p style="font-size:15px;color:var(--text-secondary);line-height:1.8;margin-bottom:48px">我们正在持续迭代 DeepSeal，以下是我们规划中的关键里程碑。路线图会根据用户反馈动态调整。</p>
+
+    <div class="changelog-entry">
+      <div style="display:flex;align-items:center;gap:12px;margin-bottom:16px">
+        <span style="width:14px;height:14px;border-radius:50%;background:#6366F1;flex-shrink:0;box-shadow:0 0 0 4px rgba(99,102,241,0.15)"></span>
+        <div class="changelog-date">近期 · 2026 Q3</div>
+      </div>
+      <h2 style="font-size:20px;font-weight:700;margin-bottom:16px;color:var(--text)">浏览器扩展 & 智能监控</h2>
+      <ul>
+        <li><strong>浏览器扩展密码自动填充</strong> — 支持 Chrome / Firefox / Safari 扩展，从加密库自动填充登录凭据，无需手动复制</li>
+        <li><strong>暗网监控集成</strong> — 定期检查你的邮箱和账号是否出现在已知数据泄露中，第一时间告警</li>
+        <li><strong>协作笔记本</strong> — 加密共享编辑，端到端加密确保只有协作者能读取内容</li>
+      </ul>
+    </div>
+
+    <div class="changelog-entry">
+      <div style="display:flex;align-items:center;gap:12px;margin-bottom:16px">
+        <span style="width:14px;height:14px;border-radius:50%;background:var(--accent-light);flex-shrink:0;box-shadow:0 0 0 4px rgba(129,140,248,0.15)"></span>
+        <div class="changelog-date">中期 · 2026 Q4</div>
+      </div>
+      <h2 style="font-size:20px;font-weight:700;margin-bottom:16px;color:var(--text)">移动端 & 格式升级</h2>
+      <ul>
+        <li><strong>移动端 iOS / Android</strong> — 原生移动应用，离线可用，生物识别解锁，与桌面版一致的加密架构</li>
+        <li><strong>密码生成器增强</strong> — 可自定义规则（长度、字符集、排除项），一键生成高强度密码并保存</li>
+        <li><strong>SNX v2 格式</strong> — 下一代加密文件格式，支持附件加密、多块合并、增量更新</li>
+      </ul>
+    </div>
+
+    <div class="changelog-entry" style="border-bottom:none;padding-bottom:0;margin-bottom:0">
+      <div style="display:flex;align-items:center;gap:12px;margin-bottom:16px">
+        <span style="width:14px;height:14px;border-radius:50%;background:var(--text-muted);flex-shrink:0;box-shadow:0 0 0 4px rgba(148,163,184,0.15)"></span>
+        <div class="changelog-date">远期 · 2027</div>
+      </div>
+      <h2 style="font-size:20px;font-weight:700;margin-bottom:16px;color:var(--text)">硬件密钥 & 企业级</h2>
+      <ul>
+        <li><strong>硬件密钥支持（FIDO2）</strong> — 兼容 YubiKey 等硬件安全密钥，作为第二因子或主解锁方式</li>
+        <li><strong>团队版管理后台</strong> — 角色权限管理、审计日志、密钥策略配置，满足企业合规要求</li>
+        <li><strong>端到端加密同步</strong> — 可选的加密同步服务，数据在传输和存储时全程加密，服务器零知识</li>
+      </ul>
+    </div>
+
+    <div style="margin-top:48px;padding:24px;background:var(--accent-bg);border:1px solid rgba(99,102,241,0.12);border-radius:var(--radius)">
+      <p style="font-size:14px;color:var(--accent);font-weight:600;margin-bottom:6px">有想要的功能？</p>
+      <p style="font-size:14px;color:var(--text-secondary);line-height:1.7">我们欢迎所有功能建议和反馈。你的需求直接影响路线图的优先级。</p>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer-bottom" style="border-top:none;padding-top:0">
+      <span>© 2026 DeepSeal by HyperGrad</span>
+      <a href="index.html" style="color:var(--accent-light)">← 返回首页</a>
+    </div>
+  </div>
+</footer>
+
+<script src="assets/js/main.js"></script>
+</body>
+</html>

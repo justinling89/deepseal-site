@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>关于 — DeepSeal</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Noto+Sans+SC:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/css/style.css" />
+</head>
+<body>
+
+<nav class="nav scrolled" id="nav">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><rect x="3" y="11" width="18" height="11" rx="2.5"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+      <span>DeepSeal</span>
+    </a>
+    <div class="nav-links">
+      <div class="nav-dropdown">
+        <button class="nav-dropdown-trigger">产品 <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg></button>
+        <div class="nav-dropdown-menu">
+          <a href="index.html#security">加密架构</a>
+          <a href="index.html#features">功能特性</a>
+          <a href="changelog.html">更新日志</a>
+        </div>
+      </div>
+      <div class="nav-dropdown">
+        <button class="nav-dropdown-trigger">解决方案 <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg></button>
+        <div class="nav-dropdown-menu">
+          <a href="solutions.html">个人用户</a>
+          <a href="solutions.html#enterprise">企业团队</a>
+        </div>
+      </div>
+      <a href="index.html#pricing">定价</a>
+      <div class="nav-dropdown">
+        <button class="nav-dropdown-trigger">资源 <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg></button>
+        <div class="nav-dropdown-menu">
+          <a href="blog.html">博客</a>
+          <a href="help.html">帮助中心</a>
+          <a href="security-whitepaper.html">安全白皮书</a>
+        </div>
+      </div>
+      <a href="about.html">关于</a>
+    </div>
+    <div class="nav-cta">
+      <a href="index.html#download" class="btn btn-sm btn-ghost">下载</a>
+      <a href="index.html#pricing" class="btn btn-sm btn-primary">升级专业版</a>
+    </div>
+    <button class="nav-hamburger" id="hamburger"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+
+<div class="mobile-nav" id="mobileNav">
+  <a href="index.html#security">加密架构</a>
+  <a href="index.html#features">功能特性</a>
+  <a href="index.html#pricing" style="font-weight:600;">定价</a>
+  <a href="blog.html">博客</a>
+  <a href="about.html">关于</a>
+  <a href="index.html#download" class="btn btn-primary" style="margin-top:8px;text-align:center;">免费下载</a>
+</div>
+
+<section class="section" style="padding-top:120px">
+  <div class="container" style="text-align:left;max-width:720px">
+    <div class="section-eyebrow">关于</div>
+    <h1 class="section-title" style="text-align:left">关于 DeepSeal</h1>
+
+    <div class="about-content">
+      <h3>我们的信念</h3>
+      <p>你的数据只属于你。不是云服务商的，不是广告平台的，也不是我们的。</p>
+      <p>DeepSeal 诞生于一个简单的观察：人们在笔记工具里存储了最隐私的信息 — 银行账户、密码、身份证号、医疗记录 — 但这些工具把数据存到了别人的服务器上。</p>
+      <p>我们相信，保护隐私的最好方式是让数据永不离开你的设备。没有云端存储，没有远程同步，没有第三方可以索取你的数据。</p>
+
+      <h3>技术理念</h3>
+      <p>DeepSeal 采用信封加密（Envelope Encryption）架构 — 与 AWS KMS、Azure Key Vault 同级别的密钥管理体系。</p>
+      <p>每条笔记拥有独立的 256-bit 数据加密密钥（DEK），DEK 由主密码派生的根密钥（KEK）加密保护。这意味着：</p>
+      <ul>
+        <li>更换密码只需重新加密 DEK，无需重加密全部数据</li>
+        <li>每条笔记密钥独立，一条被突破不影响其他</li>
+        <li>没有主密码，即便是我们也无法读取你的数据</li>
+      </ul>
+
+      <h3>团队</h3>
+      <p>DeepSeal 由 HyperGrad 团队开发维护。我们是一群关注隐私保护和信息安全的工程师。</p>
+      <p>如果你也认同「隐私是基本权利」这个理念，欢迎加入我们。</p>
+
+      <div style="margin-top:40px">
+        <a href="index.html#download" class="btn btn-primary btn-lg">免费下载 DeepSeal</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer-bottom" style="border-top:none;padding-top:0">
+      <span>© 2026 DeepSeal by HyperGrad</span>
+      <a href="index.html" style="color:var(--accent-light)">← 返回首页</a>
+    </div>
+  </div>
+</footer>
+
+<script src="assets/js/main.js"></script>
+</body>
+</html>

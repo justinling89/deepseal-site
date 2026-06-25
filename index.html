@@ -1,0 +1,594 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>DeepSeal — 本地加密笔记，你的隐私只有你说了算</title>
+  <meta name="description" content="DeepSeal 三层信封加密架构，数据永不离开你的设备，零服务器零后门。" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Noto+Sans+SC:wght@400;500;600;700;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/css/style.css" />
+</head>
+<body>
+
+<!-- ===== NAV ===== -->
+<nav class="nav" id="nav">
+  <div class="nav-inner">
+    <a href="/" class="nav-logo">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><rect x="3" y="11" width="18" height="11" rx="2.5"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+      <span>DeepSeal</span>
+    </a>
+    <div class="nav-links">
+      <div class="nav-dropdown">
+        <button class="nav-dropdown-trigger">产品 <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg></button>
+        <div class="nav-dropdown-menu">
+          <a href="#security">加密架构</a>
+          <a href="#features">功能特性</a>
+          <a href="changelog.html">更新日志</a>
+          <a href="roadmap.html">路线图</a>
+        </div>
+      </div>
+      <div class="nav-dropdown">
+        <button class="nav-dropdown-trigger">解决方案 <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg></button>
+        <div class="nav-dropdown-menu">
+          <a href="solutions.html">个人用户</a>
+          <a href="solutions.html#enterprise">企业团队</a>
+          <a href="solutions.html#developer">开发者</a>
+        </div>
+      </div>
+      <a href="#pricing">定价</a>
+      <div class="nav-dropdown">
+        <button class="nav-dropdown-trigger">资源 <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg></button>
+        <div class="nav-dropdown-menu">
+          <a href="blog.html">博客</a>
+          <a href="help.html">帮助中心</a>
+          <a href="security-whitepaper.html">安全白皮书</a>
+          <a href="docs.html">API 文档</a>
+        </div>
+      </div>
+      <a href="about.html">关于</a>
+    </div>
+    <div class="nav-cta">
+      <a href="#download" class="btn btn-sm btn-ghost">下载</a>
+      <a href="#pricing" class="btn btn-sm btn-primary">升级专业版</a>
+    </div>
+    <button class="nav-hamburger" id="hamburger"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+<div class="mobile-nav" id="mobileNav">
+  <div class="mobile-nav-group">
+    <div class="mobile-nav-title">产品</div>
+    <a href="#security">加密架构</a>
+    <a href="#features">功能特性</a>
+    <a href="changelog.html">更新日志</a>
+  </div>
+  <div class="mobile-nav-group">
+    <div class="mobile-nav-title">解决方案</div>
+    <a href="solutions.html">个人用户</a>
+    <a href="solutions.html#enterprise">企业团队</a>
+    <a href="solutions.html#developer">开发者</a>
+  </div>
+  <div class="mobile-nav-group">
+    <div class="mobile-nav-title">资源</div>
+    <a href="blog.html">博客</a>
+    <a href="help.html">帮助中心</a>
+    <a href="security-whitepaper.html">安全白皮书</a>
+  </div>
+  <a href="#pricing" style="font-weight:600;">定价</a>
+  <a href="about.html">关于</a>
+  <a href="#download" class="btn btn-primary" style="margin-top:8px;text-align:center;">免费下载</a>
+</div>
+
+<!-- ===== HERO ===== -->
+<section class="hero" id="hero">
+  <div class="hero-bg-pattern"></div>
+  <div class="hero-glow hero-glow-1"></div>
+  <div class="hero-glow hero-glow-2"></div>
+  <div class="hero-grid">
+    <div class="hero-left">
+      <div class="hero-eyebrow">
+        <span class="hero-dot"></span>
+        零信任加密 · 100% 本地处理
+      </div>
+      <h1>你的隐私<br/><em>只有你说了算</em></h1>
+      <p class="hero-desc">三层信封加密，数据永不离开你的设备。没有云端，没有服务器，没有后门。</p>
+      <div class="hero-actions">
+        <a href="#download" class="btn btn-primary btn-lg">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+          免费下载
+        </a>
+        <a href="#security" class="btn btn-outline btn-lg">了解加密架构 →</a>
+      </div>
+      <div class="hero-trust">
+        <div class="hero-trust-item"><strong>AES-256-GCM</strong><span>军事级加密</span></div>
+        <div class="hero-trust-div"></div>
+        <div class="hero-trust-item"><strong>0 KB</strong><span>数据上传</span></div>
+        <div class="hero-trust-div"></div>
+        <div class="hero-trust-item"><strong>100%</strong><span>本地处理</span></div>
+      </div>
+    </div>
+    <div class="hero-right">
+      <div class="mockup">
+        <div class="mockup-titlebar">
+          <span class="mockup-traffic"><i></i><i></i><i></i></span>
+          <span class="mockup-title">DeepSeal</span>
+        </div>
+        <div class="mockup-body">
+          <div class="mockup-sidebar">
+            <div class="mockup-sidebar-title">本地加密 · 零信任架构</div>
+            <div class="mockup-sidebar-brand">DeepSeal</div>
+            <div class="mockup-nav-item active">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg>
+              工作笔记
+            </div>
+            <div class="mockup-nav-item">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg>
+              个人密码
+            </div>
+            <div class="mockup-nav-item">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg>
+              旅行信息
+            </div>
+            <div class="mockup-sidebar-lock">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+              已锁定
+            </div>
+          </div>
+          <div class="mockup-list">
+            <div class="mockup-list-header">8 条笔记</div>
+            <div class="mockup-card selected">
+              <div class="mockup-card-title">银行账户信息</div>
+              <div class="mockup-card-preview">
+                加密块 ×3 · <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#6366F1" stroke-width="2.5"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg> 已加密
+              </div>
+            </div>
+            <div class="mockup-card">
+              <div class="mockup-card-title">WiFi 密码清单</div>
+              <div class="mockup-card-preview">加密块 ×1 · 家里/公司/…</div>
+            </div>
+            <div class="mockup-card">
+              <div class="mockup-card-title">门禁卡信息</div>
+              <div class="mockup-card-preview">加密块 ×2 · 已加密</div>
+            </div>
+          </div>
+          <div class="mockup-editor">
+            <div class="mockup-editor-title">银行账户信息</div>
+            <div class="mockup-editor-body">
+              <div class="mockup-line">工商银行储蓄卡 **** 8842</div>
+              <div class="mockup-enc-block">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#6366F1" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+                <span>密码已加密</span>
+              </div>
+              <div class="mockup-line" style="margin-top:8px">招商银行信用卡 **** 3356</div>
+              <div class="mockup-enc-block">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#6366F1" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+                <span>CVV 已加密</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== LOGOS / SOCIAL PROOF ===== -->
+<section class="logos-bar">
+  <div class="container">
+    <p class="logos-label">已被法律、金融、芯片、医疗等行业团队采用</p>
+    <div class="logos-row">
+      <span class="logo-item">法律行业</span>
+      <span class="logo-item">量化金融</span>
+      <span class="logo-item">芯片设计</span>
+      <span class="logo-item">临床研究</span>
+      <span class="logo-item">管理咨询</span>
+      <span class="logo-item">信息安全</span>
+    </div>
+  </div>
+</section>
+
+<!-- ===== ENCRYPTION VISUAL ===== -->
+<section class="section" id="security">
+  <div class="container">
+    <div class="section-tag">SECURITY ARCHITECTURE</div>
+    <div class="section-eyebrow">安全架构</div>
+    <h2 class="section-title">三层信封加密<br/>每一层都是独立防线</h2>
+    <p class="section-subtitle">与 AWS、Azure 同级别的密钥管理体系 — 但密钥只在你手里。</p>
+
+    <div class="encrypt-visual">
+      <!-- Layer visualization - concentric rings -->
+      <div class="encrypt-rings">
+        <div class="ring ring-outer">
+          <div class="ring ring-middle">
+            <div class="ring ring-inner">
+              <div class="ring-core">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="ring-labels">
+          <div class="ring-label label-outer"><span class="ring-label-dot"></span>密文层 — AES-256-GCM 加密后数据</div>
+          <div class="ring-label label-middle"><span class="ring-label-dot"></span>DEK 层 — 每条笔记独立数据密钥</div>
+          <div class="ring-label label-inner"><span class="ring-label-dot"></span>KEK 层 — 主密码派生的根密钥</div>
+        </div>
+      </div>
+
+      <!-- Flow steps -->
+      <div class="encrypt-steps">
+        <div class="encrypt-step">
+          <div class="encrypt-step-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+          </div>
+          <div class="encrypt-step-content">
+            <h3>输入主密码</h3>
+            <p>PBKDF2 进行 <strong>100,000 次</strong>迭代 + 随机盐值，派生为<strong>密钥加密密钥 KEK</strong>。KEK 永不存储。</p>
+          </div>
+        </div>
+        <div class="encrypt-step-arrow">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><polyline points="19 12 12 19 5 12"/></svg>
+        </div>
+        <div class="encrypt-step">
+          <div class="encrypt-step-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg>
+          </div>
+          <div class="encrypt-step-content">
+            <h3>每条笔记独立 DEK</h3>
+            <p>系统为每条笔记生成<strong>256-bit 随机密钥</strong>。DEK 加密内容，KEK 加密 DEK — 双重隔离。</p>
+          </div>
+        </div>
+        <div class="encrypt-step-arrow">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><polyline points="19 12 12 19 5 12"/></svg>
+        </div>
+        <div class="encrypt-step">
+          <div class="encrypt-step-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 12 15 16 10"/></svg>
+          </div>
+          <div class="encrypt-step-content">
+            <h3>磁盘上只有密文</h3>
+            <p>没有主密码 → 没有 KEK → 没有 DEK → <strong>数据不可恢复</strong>。即便是我们也无法读取。</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Benefits -->
+      <div class="encrypt-benefits">
+        <div class="encrypt-benefit">
+          <div class="encrypt-benefit-icon">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#10B981" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>
+          </div>
+          <span>换密码只需重加密 DEK，无需重加密全部笔记</span>
+        </div>
+        <div class="encrypt-benefit">
+          <div class="encrypt-benefit-icon">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#10B981" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>
+          </div>
+          <span>每条笔记密钥独立，一条被突破不影响其他</span>
+        </div>
+        <div class="encrypt-benefit">
+          <div class="encrypt-benefit-icon">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#10B981" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>
+          </div>
+          <span>修改密码后旧设备数据自动失效</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== STATS BAR ===== -->
+<section class="stats-bar">
+  <div class="container">
+    <div class="stats-grid">
+      <div class="stat-item">
+        <div class="stat-num">0</div>
+        <div class="stat-label">服务器持有你的数据</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">256</div>
+        <div class="stat-label">位加密密钥长度</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">100K</div>
+        <div class="stat-label">次 PBKDF2 迭代</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">60s</div>
+        <div class="stat-label">加密块自动重锁</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FEATURES ===== -->
+<section class="section section-alt" id="features">
+  <div class="container">
+    <div class="section-tag">CORE FEATURES</div>
+    <div class="section-eyebrow">核心功能</div>
+    <h2 class="section-title">不只是加密笔记<br/>是你的<span class="accent">安全工作台</span></h2>
+
+    <div class="features-grid">
+      <div class="feature-card feature-hero">
+        <div class="feature-hero-inner">
+          <div class="feature-hero-text">
+            <div class="feature-icon-lg">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#6366F1" stroke-width="1.8" stroke-linecap="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+            </div>
+            <h3>加密块 — 笔记中的保险箱</h3>
+            <p>在笔记任意位置插入独立加密的内容块。每个加密块拥有独立 DEK，点击解锁查看，60 秒自动重锁保护。</p>
+          </div>
+          <div class="feature-demo">
+            <div class="demo-note-line">工商银行储蓄卡 **** 8842</div>
+            <div class="demo-enc-inline">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#6366F1" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+              <span>密码: ••••••</span>
+            </div>
+            <div class="demo-note-line" style="margin-top:6px">账单日: 每月 5 号</div>
+            <div class="demo-enc-inline">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#6366F1" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+              <span>CVV: •••</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#6366F1" stroke-width="1.8" stroke-linecap="round"><path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/><polyline points="16 6 12 2 8 6"/><line x1="12" y1="2" x2="12" y2="15"/></svg>
+        </div>
+        <h3>SNSHR1 安全分享</h3>
+        <p>生成独立加密文件，对方用浏览器输入密码即可解密。无需安装，无需服务器。</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#6366F1" stroke-width="1.8" stroke-linecap="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+        </div>
+        <h3>SNX 加密导出</h3>
+        <p>加密文件跨设备安全传输。支持批量导出与导入。</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#6366F1" stroke-width="1.8" stroke-linecap="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        </div>
+        <h3>安全体检</h3>
+        <p>密码强度、文件风险、剪贴板泄露。一键生成报告。</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#6366F1" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+        </div>
+        <h3>智能自动锁定</h3>
+        <p>离开即加密。专业版支持 1-30 分钟精细控制。</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#6366F1" stroke-width="1.8" stroke-linecap="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>
+        </div>
+        <h3>全平台覆盖</h3>
+        <p>Windows / macOS / Linux 原生支持，离线可用。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== COMPARISON ===== -->
+<section class="section" id="compare">
+  <div class="container">
+    <div class="section-tag">WHY DEEPSEAL</div>
+    <div class="section-eyebrow">为什么选择 DeepSeal</div>
+    <h2 class="section-title">传统笔记 vs <span class="accent">DeepSeal</span></h2>
+
+    <div class="compare-table-wrap">
+      <table class="compare-table">
+        <thead>
+          <tr>
+            <th></th>
+            <th class="compare-other">传统笔记工具</th>
+            <th class="compare-us">DeepSeal</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>数据存储</td>
+            <td class="compare-other">☁️ 云端明文存储</td>
+            <td class="compare-us"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#10B981" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg> 本地三层加密</td>
+          </tr>
+          <tr>
+            <td>加密密钥</td>
+            <td class="compare-other">🔑 服务商持有</td>
+            <td class="compare-us"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#10B981" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg> 仅你持有</td>
+          </tr>
+          <tr>
+            <td>加密粒度</td>
+            <td class="compare-other">整个笔记或无</td>
+            <td class="compare-us"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#10B981" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg> 段落级加密块</td>
+          </tr>
+          <tr>
+            <td>离线可用</td>
+            <td class="compare-other">❌ 需要联网同步</td>
+            <td class="compare-us"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#10B981" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg> 完全离线</td>
+          </tr>
+          <tr>
+            <td>数据泄露面</td>
+            <td class="compare-other">服务器、API、CDN、员工…</td>
+            <td class="compare-us"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#10B981" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg> 零 — 无服务器</td>
+          </tr>
+          <tr>
+            <td>安全分享</td>
+            <td class="compare-other">转发/截图</td>
+            <td class="compare-us"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#10B981" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg> SNSHR1 加密文件分享</td>
+          </tr>
+          <tr>
+            <td>安全体检</td>
+            <td class="compare-other">无</td>
+            <td class="compare-us"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#10B981" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg> 文件/剪贴板/密码</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- ===== CASES ===== -->
+<section class="section section-alt" id="cases">
+  <div class="container">
+    <div class="section-tag">CUSTOMER CASES</div>
+    <div class="section-eyebrow">客户案例</div>
+    <h2 class="section-title">他们用 DeepSeal 守护核心数据</h2>
+
+    <div class="cases-grid">
+      <div class="case-card">
+        <div class="case-top"><span class="case-logo">某律所</span><span class="case-tag">法律行业</span></div>
+        <p>"客户委托文件和诉讼策略是核心资产。DeepSeal 的加密块让合伙人之间共享机密有了安全通道，配合 SNSHR1 分享，密码解密、阅后即删。"</p>
+        <div class="case-bottom"><span>信息安全负责人</span><span class="case-stat">80+ 名律师 · 10,000+ 加密文件</span></div>
+      </div>
+      <div class="case-card">
+        <div class="case-top"><span class="case-logo">某量化</span><span class="case-tag">金融行业</span></div>
+        <p>"交易策略模型和风控参数是公司命脉。DeepSeal 的离线架构完全满足金融合规要求，SNX 加密导出让我们安全地在终端间迁移策略配置。"</p>
+        <div class="case-bottom"><span>合规总监</span><span class="case-stat">40+ 人团队 · 3,000+ 加密笔记</span></div>
+      </div>
+      <div class="case-card">
+        <div class="case-top"><span class="case-logo">某半导体</span><span class="case-tag">芯片行业</span></div>
+        <p>"芯片设计文档涉及商业机密，不能用云服务。DeepSeal 的本地化架构和信封加密完美契合我们的安全策略，体检功能还发现了文件传输风险点。"</p>
+        <div class="case-bottom"><span>CTO</span><span class="case-stat">200+ 名工程师 · 25,000+ 加密块</span></div>
+      </div>
+      <div class="case-card">
+        <div class="case-top"><span class="case-logo">某临床</span><span class="case-tag">医疗行业</span></div>
+        <p>"患者数据受双重法规约束。加密块让我们在同一篇笔记中混排公开信息与受保护数据，只有授权人员才能解锁查看，合规又高效。"</p>
+        <div class="case-bottom"><span>数据合规官</span><span class="case-stat">150+ 名研究员 · 8,000+ 加密笔记</span></div>
+      </div>
+    </div>
+    <p style="font-size:12px;color:var(--text-muted);margin-top:24px;text-align:center">※ 以上案例基于真实场景的客户画像，信息已做脱敏处理</p>
+  </div>
+</section>
+
+<!-- ===== PRICING ===== -->
+<section class="section" id="pricing">
+  <div class="container">
+    <div class="section-tag">PRICING</div>
+    <div class="section-eyebrow">定价</div>
+    <h2 class="section-title">免费开始，按需升级</h2>
+
+    <div class="pricing-grid">
+      <div class="pricing-card">
+        <div class="pricing-name">免费版</div>
+        <div class="pricing-price"><span class="pricing-amount">¥0</span><span class="pricing-period">永久免费</span></div>
+        <ul class="pricing-list">
+          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#10B981" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>3 个笔记本 / 30 条笔记</li>
+          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#10B981" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>5 个加密块</li>
+          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#10B981" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>10 次加密分享</li>
+          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#10B981" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>SNX 导出 3 次/月</li>
+          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#10B981" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>安全体检 2 次/月</li>
+          <li class="muted"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#CBD5E1" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>密码生成器</li>
+          <li class="muted"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#CBD5E1" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>文件安全扫描</li>
+          <li class="muted"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#CBD5E1" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>自定义自动锁定</li>
+        </ul>
+        <a href="#download" class="btn btn-outline btn-block">免费下载</a>
+      </div>
+      <div class="pricing-card pricing-pro">
+        <div class="pricing-badge">推荐</div>
+        <div class="pricing-name">专业版</div>
+        <div class="pricing-price"><span class="pricing-amount">¥98</span><span class="pricing-period">/年（约¥8.2/月）</span></div>
+        <ul class="pricing-list">
+          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#10B981" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg><strong>无限</strong>笔记 & 笔记本</li>
+          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#10B981" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg><strong>无限</strong>加密块</li>
+          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#10B981" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg><strong>无限</strong>加密分享</li>
+          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#10B981" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>密码生成器</li>
+          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#10B981" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>SNX 无限导出 + 导入</li>
+          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#10B981" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>自定义自动锁定 1-30 分钟</li>
+          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#10B981" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>文件安全扫描</li>
+          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#10B981" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>HTML 安全报告导出</li>
+        </ul>
+        <a href="#download" class="btn btn-primary btn-block">立即升级</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== DOWNLOAD CTA ===== -->
+<section class="section section-cta" id="download">
+  <div class="cta-bg-circle cta-c1"></div>
+  <div class="cta-bg-circle cta-c2"></div>
+  <div class="container" style="position:relative;z-index:1">
+    <h2 class="section-title" style="margin-bottom:12px;color:#fff">现在开始，掌控你的数据</h2>
+    <p style="color:rgba(255,255,255,0.75);margin-bottom:40px;font-size:17px">30 秒完成安装，无需注册，无需联网</p>
+    <div class="cta-buttons">
+      <a href="#" class="btn btn-cta-white btn-lg">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg>
+        Windows
+      </a>
+      <a href="#" class="btn btn-cta-white btn-lg">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><path d="M12 2a15.3 15.3 0 0 0-4 10 15.3 15.3 0 0 0 4 10"/></svg>
+        macOS
+      </a>
+      <a href="#" class="btn btn-cta-ghost btn-lg">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/></svg>
+        Linux
+      </a>
+    </div>
+    <p style="font-size:13px;color:rgba(255,255,255,0.4);margin-top:20px">v1.0 · 30 天全功能试用 · 无需信用卡</p>
+  </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand-col">
+        <div class="footer-brand">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#6366F1" stroke-width="2.2"><rect x="3" y="11" width="18" height="11" rx="2.5"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+          <span>DeepSeal</span>
+        </div>
+        <p class="footer-desc">本地加密 · 零信任架构<br/>你的隐私只有你说了算。</p>
+        <p class="footer-domain">hypergrad.cn</p>
+      </div>
+      <div class="footer-col">
+        <h4>产品</h4>
+        <a href="#features">功能特性</a>
+        <a href="#security">加密架构</a>
+        <a href="#pricing">定价</a>
+        <a href="#download">下载</a>
+        <a href="changelog.html">更新日志</a>
+        <a href="roadmap.html">路线图</a>
+      </div>
+      <div class="footer-col">
+        <h4>解决方案</h4>
+        <a href="solutions.html">个人用户</a>
+        <a href="solutions.html#enterprise">企业团队</a>
+        <a href="solutions.html#developer">开发者</a>
+        <a href="compliance.html">安全合规</a>
+      </div>
+      <div class="footer-col">
+        <h4>资源</h4>
+        <a href="blog.html">博客</a>
+        <a href="help.html">帮助中心</a>
+        <a href="security-whitepaper.html">安全白皮书</a>
+        <a href="docs.html">API 文档</a>
+        <a href="bug-bounty.html">漏洞报告</a>
+      </div>
+      <div class="footer-col">
+        <h4>公司</h4>
+        <a href="about.html">关于我们</a>
+        <a href="careers.html">加入我们</a>
+        <a href="contact.html">联系我们</a>
+        <a href="brand.html">品牌资源</a>
+      </div>
+      <div class="footer-col">
+        <h4>法律</h4>
+        <a href="privacy.html">隐私政策</a>
+        <a href="terms.html">服务条款</a>
+        <a href="dpa.html">数据处理协议</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 DeepSeal by HyperGrad</span>
+      <span>hypergrad.cn</span>
+    </div>
+  </div>
+</footer>
+
+<script src="assets/js/main.js"></script>
+
+<!-- Back to Top -->
+<button class="backtop" id="backTop" title="回到顶部">↑</button>
+</body>
+</html>

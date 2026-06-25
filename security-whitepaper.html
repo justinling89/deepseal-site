@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>安全白皮书 — DeepSeal</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Noto+Sans+SC:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/css/style.css" />
+</head>
+<body>
+
+<nav class="nav scrolled" id="nav">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><rect x="3" y="11" width="18" height="11" rx="2.5"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+      <span>DeepSeal</span>
+    </a>
+    <div class="nav-links">
+      <div class="nav-dropdown">
+        <button class="nav-dropdown-trigger">产品 <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg></button>
+        <div class="nav-dropdown-menu">
+          <a href="index.html#security">加密架构</a>
+          <a href="index.html#features">功能特性</a>
+          <a href="changelog.html">更新日志</a>
+          <a href="roadmap.html">路线图</a>
+        </div>
+      </div>
+      <div class="nav-dropdown">
+        <button class="nav-dropdown-trigger">解决方案 <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg></button>
+        <div class="nav-dropdown-menu">
+          <a href="solutions.html">个人用户</a>
+          <a href="solutions.html#enterprise">企业团队</a>
+          <a href="solutions.html#developer">开发者</a>
+        </div>
+      </div>
+      <a href="index.html#pricing">定价</a>
+      <div class="nav-dropdown">
+        <button class="nav-dropdown-trigger">资源 <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg></button>
+        <div class="nav-dropdown-menu">
+          <a href="blog.html">博客</a>
+          <a href="help.html">帮助中心</a>
+          <a href="security-whitepaper.html">安全白皮书</a>
+          <a href="docs.html">API 文档</a>
+        </div>
+      </div>
+      <a href="about.html">关于</a>
+    </div>
+    <div class="nav-cta">
+      <a href="index.html#download" class="btn btn-sm btn-ghost">下载</a>
+      <a href="index.html#pricing" class="btn btn-sm btn-primary">升级专业版</a>
+    </div>
+    <button class="nav-hamburger" id="hamburger"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+
+<div class="mobile-nav" id="mobileNav">
+  <a href="index.html#security">加密架构</a>
+  <a href="index.html#features">功能特性</a>
+  <a href="index.html#pricing" style="font-weight:600;">定价</a>
+  <a href="blog.html">博客</a>
+  <a href="about.html">关于</a>
+  <a href="index.html#download" class="btn btn-primary" style="margin-top:8px;text-align:center;">免费下载</a>
+</div>
+
+<section class="section" style="padding-top:120px">
+  <div class="container" style="text-align:left;max-width:720px">
+    <div class="section-eyebrow">安全白皮书</div>
+    <h1 class="section-title" style="text-align:left">DeepSeal 安全架构</h1>
+    <p style="font-size:13px;color:var(--text-muted);margin-bottom:48px">版本 1.0 · 最后更新 2026 年 6 月</p>
+
+    <div class="about-content">
+      <h3>1. 加密架构概览</h3>
+      <p>DeepSeal 采用信封加密（Envelope Encryption）三层模型，与 AWS KMS、Azure Key Vault、Google Cloud KMS 使用相同的密钥管理体系。</p>
+      <p>三层架构由外到内分别是：</p>
+      <ul>
+        <li><strong>根密钥（KEK，Key Encryption Key）</strong>— 由用户主密码通过 PBKDF2 派生，用于加密 DEK。KEK 永不离开内存，永不落盘。</li>
+        <li><strong>数据加密密钥（DEK，Data Encryption Key）</strong>— 每条笔记独立生成 256-bit 随机密钥，用于加密实际笔记内容。DEK 以密文形式存储在本地数据库中。</li>
+        <li><strong>加密数据（Ciphertext）</strong>— 笔记明文经 AES-256-GCM 加密后的密文，与认证标签（Authentication Tag）和随机 Nonce 一起存储。</li>
+      </ul>
+      <p>这种分层设计的核心优势：更换主密码时，只需用新 KEK 重新加密 DEK，无需重加密所有笔记数据，时间复杂度从 O(n) 降至 O(1)。</p>
+
+      <h3>2. 密钥派生</h3>
+      <p>用户主密码通过 PBKDF2-HMAC-SHA256 算法派生根密钥（KEK），参数如下：</p>
+      <ul>
+        <li><strong>哈希函数</strong>：HMAC-SHA256</li>
+        <li><strong>迭代次数</strong>：100,000 次（100K iterations）</li>
+        <li><strong>盐值（Salt）</strong>：128-bit 随机盐，每个用户唯一，随数据库存储</li>
+        <li><strong>输出长度</strong>：256 bits</li>
+      </ul>
+      <p>100K 次迭代在当前硬件下生成一次约需 100-200ms，对正常登录体验影响极小，但对暴力破解构成显著计算壁垒 — 攻击者每尝试一个密码都需要重复同样的计算量。</p>
+      <p>盐值确保即使两个用户使用相同的主密码，派生出的 KEK 也完全不同，防止彩虹表攻击。</p>
+
+      <h3>3. 数据加密</h3>
+      <p>每条笔记使用独立的 DEK 进行 AES-256-GCM 加密：</p>
+      <ul>
+        <li><strong>算法</strong>：AES-256-GCM（Galois/Counter Mode）</li>
+        <li><strong>密钥长度</strong>：256 bits</li>
+        <li><strong>Nonce</strong>：96-bit 随机数，每次加密唯一生成</li>
+        <li><strong>认证标签</strong>：128-bit，用于验证密文完整性</li>
+      </ul>
+      <p>AES-GCM 是认证加密算法（AEAD），同时提供机密性和完整性保证。任何对密文的篡改都会在解密时被检测到，返回认证失败而非错误明文。</p>
+      <p>每条笔记使用独立 DEK 意味着：</p>
+      <ul>
+        <li>单条笔记的 DEK 泄露不影响其他笔记</li>
+        <li>相同内容两次加密产生不同密文（因 Nonce 不同）</li>
+        <li>支持对单条笔记重新加密而不影响其他数据</li>
+      </ul>
+
+      <h3>4. 存储安全</h3>
+      <p>DeepSeal 使用本地 SQLite 数据库存储加密数据，存储内容包括：</p>
+      <ul>
+        <li><strong>加密后的 DEK</strong>：E(DEK, KEK) — 由 KEK 加密的 DEK 密文</li>
+        <li><strong>加密后的笔记内容</strong>：E(plaintext, DEK, nonce) — 由 DEK 加密的笔记密文</li>
+        <li><strong>随机 Nonce</strong>：每次加密时生成的 96-bit 随机数</li>
+        <li><strong>认证标签 Tag</strong>：128-bit GCM 认证标签</li>
+        <li><strong>盐值 Salt</strong>：128-bit PBKDF2 盐值</li>
+        <li><strong>元数据</strong>：笔记本名称、标签、创建/修改时间（未加密，用于列表展示）</li>
+      </ul>
+      <p>关键安全属性：</p>
+      <ul>
+        <li>KEK 和 DEK 明文仅存在于运行时内存中，应用锁定或退出后立即清除</li>
+        <li>笔记明文内容从不以明文形式写入磁盘</li>
+        <li>数据库文件本身不使用额外加密层，因为所有敏感数据已在应用层完成加密</li>
+      </ul>
+
+      <h3>5. 密钥轮换</h3>
+      <p>更换主密码时，DeepSeal 执行以下步骤：</p>
+      <ul>
+        <li>Step 1: 用户输入旧主密码，派生旧 KEK，解锁所有 DEK</li>
+        <li>Step 2: 用户设置新主密码，用新 Salt 通过 PBKDF2 派生新 KEK</li>
+        <li>Step 3: 用新 KEK 重新加密所有 DEK：E(DEK, new_KEK)</li>
+        <li>Step 4: 替换数据库中旧的 E(DEK, old_KEK) 和 Salt</li>
+        <li>Step 5: 安全擦除旧 KEK 和旧 Salt</li>
+      </ul>
+      <p>整个过程中，笔记密文不需要重新加密。由于信封加密的分层设计，密钥轮换的时间与笔记数量无关 — 无论你有多少条笔记，轮换操作都是常数时间完成。</p>
+
+      <h3>6. 安全假设与边界</h3>
+      <p>DeepSeal 的安全模型基于以下假设，用户应当了解：</p>
+      <ul>
+        <li><strong>主密码强度</strong>：安全性上限取决于主密码的熵。弱密码（如 "123456"）可被暴力破解。建议使用 12 位以上混合字符或密码短语。</li>
+        <li><strong>设备安全</strong>：DeepSeal 假设运行设备本身是安全的。如果设备已被恶意软件感染（如键盘记录器），主密码可能在输入时被窃取。</li>
+        <li><strong>内存安全</strong>：密钥在运行时存在于内存中。具有物理访问权限的攻击者可能通过内存转储获取密钥。应用锁定后会主动清除内存中的密钥材料。</li>
+        <li><strong>不防截图</strong>：DeepSeal 不阻止屏幕截图或录屏。如果设备被远程控制，解锁状态下的内容可能通过截图泄露。</li>
+        <li><strong>备份安全</strong>：用户需自行确保备份文件的安全。SNX 导出文件受密码保护，但明文导出的 Markdown 文件不包含加密。</li>
+      </ul>
+      <p>我们持续评估威胁模型并改进安全机制。如果你发现潜在的安全问题，请通过安全披露渠道联系我们。</p>
+    </div>
+
+    <div style="margin-top:40px;padding:24px;background:var(--accent-bg);border:1px solid rgba(99,102,241,0.12);border-radius:var(--radius)">
+      <p style="font-size:14px;color:var(--accent);font-weight:600;margin-bottom:6px">更多合规信息</p>
+      <p style="font-size:14px;color:var(--text-secondary);line-height:1.7">了解 DeepSeal 如何满足行业合规要求，请参阅 <a href="compliance.html" style="color:var(--accent);font-weight:600">安全合规</a> 页面。</p>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer-bottom" style="border-top:none;padding-top:0">
+      <span>© 2026 DeepSeal by HyperGrad</span>
+      <a href="index.html" style="color:var(--accent-light)">← 返回首页</a>
+    </div>
+  </div>
+</footer>
+
+<script src="assets/js/main.js"></script>
+</body>
+</html>

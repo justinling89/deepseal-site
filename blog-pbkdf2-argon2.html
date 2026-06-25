@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PBKDF2 vs Argon2：密钥派生函数如何选择 — DeepSeal 博客</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Noto+Sans+SC:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/css/style.css" />
+</head>
+<body>
+
+<nav class="nav scrolled" id="nav">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><rect x="3" y="11" width="18" height="11" rx="2.5"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+      <span>DeepSeal</span>
+    </a>
+    <div class="nav-links">
+      <div class="nav-dropdown"><button class="nav-dropdown-trigger">产品 <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg></button><div class="nav-dropdown-menu"><a href="index.html#security">加密架构</a><a href="index.html#features">功能特性</a><a href="changelog.html">更新日志</a><a href="roadmap.html">路线图</a></div></div>
+      <div class="nav-dropdown"><button class="nav-dropdown-trigger">解决方案 <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg></button><div class="nav-dropdown-menu"><a href="solutions.html">个人用户</a><a href="solutions.html#enterprise">企业团队</a><a href="solutions.html#developer">开发者</a></div></div>
+      <a href="index.html#pricing">定价</a>
+      <div class="nav-dropdown"><button class="nav-dropdown-trigger">资源 <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg></button><div class="nav-dropdown-menu"><a href="blog.html">博客</a><a href="help.html">帮助中心</a><a href="security-whitepaper.html">安全白皮书</a><a href="docs.html">API 文档</a></div></div>
+      <a href="about.html">关于</a>
+    </div>
+    <div class="nav-cta"><a href="index.html#download" class="btn btn-sm btn-ghost">下载</a><a href="index.html#pricing" class="btn btn-sm btn-primary">升级专业版</a></div>
+    <button class="nav-hamburger" id="hamburger"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+
+<section class="section" style="padding-top:120px">
+  <div class="container" style="text-align:left;max-width:720px">
+    <div class="section-eyebrow">博客</div>
+    <h1 class="section-title" style="text-align:left; font-size:32px">PBKDF2 vs Argon2：密钥派生函数如何选择</h1>
+    <div style="color:var(--text-muted);font-size:13px;margin:16px 0 48px;display:flex;gap:16px">
+      <span class="blog-tag" style="font-size:11px">技术深潜</span>
+      <span>2026年5月27日</span>
+      <span>阅读时间 10 分钟</span>
+    </div>
+
+    <div class="about-content">
+      <h3>密钥派生函数的作用</h3>
+      <p>人类记忆的密码和加密算法需要的密钥之间存在一道鸿沟：你的主密码可能是 "MyCat2024!"，而 AES-256 需要的是一个 256-bit 的二进制密钥——形如 <code>0x7f3b9c...</code> 的 32 字节序列。</p>
+      <p>密钥派生函数（Key Derivation Function, KDF）就是这道鸿沟的桥梁。它接受一个可变长度的密码和一个随机盐值（salt），输出一个固定长度的密钥。关键的不是"转换"本身，而是这个转换过程的计算成本——KDF 必须足够慢，让攻击者无法在合理时间内暴力破解。</p>
+      <p>一个不安全的 KDF（如简单的 SHA-256 哈希）可以在现代 GPU 上每秒尝试数十亿次密码，而一个设计良好的 KDF 会将这个速度压低到每秒几千次甚至更低。</p>
+
+      <h3>PBKDF2 的原理和工作方式</h3>
+      <p>PBKDF2（Password-Based Key Derivation Function 2）由 RSA 实验室的 B. Kaliski 在 2000 年提出，定义在 RFC 2898 中。它的工作方式直截了当：</p>
+      <ul>
+        <li>将密码和盐值拼接，计算一次 HMAC（通常基于 SHA-256）。</li>
+        <li>将上一次的输出作为输入再计算一次 HMAC。</li>
+        <li>重复上述过程，迭代次数由参数指定。</li>
+      </ul>
+      <p>迭代次数是 PBKDF2 的核心参数。100,000 次迭代意味着计算一个密钥需要执行 100,000 次 HMAC 操作。对于合法用户，解密时等待一次几百毫秒的延迟完全可以接受；但对于尝试数十亿密码的攻击者，这个成本就变得不可承受。</p>
+      <p>PBKDF2 的主要局限是：它的每一步运算都是纯 CPU 密集型的，对内存消耗极低。这意味着攻击者可以使用 GPU 或专用 ASIC 芯片并行计算大量候选密码，大幅降低单次尝试的有效成本。</p>
+
+      <h3>Argon2 的原理和优势</h3>
+      <p>Argon2 是 2015 年密码哈希竞赛（Password Hashing Competition）的获胜者，专门为抵抗 GPU 和 ASIC 暴力破解而设计。它与 PBKDF2 的根本区别在于：Argon2 不仅消耗 CPU 时间，还大量消耗内存。</p>
+      <p>Argon2 的核心优势：</p>
+      <ul>
+        <li><strong>抗 GPU 并行</strong>：GPU 拥有大量核心但每个核心的内存极有限。Argon2 要求每次计算占用例如 64MB 内存，一块拥有 16GB 显存的 GPU 最多只能并行 256 次尝试，远低于 PBKDF2 下数万次的并行度。</li>
+        <li><strong>抗 ASIC</strong>：设计专用芯片攻击 PBKDF2 只需要计算单元和极少内存。而攻击 Argon2 需要在芯片上集成大量内存，制造成本呈指数级增长。</li>
+        <li><strong>可调参数</strong>：Argon2 提供三个可调参数——迭代时间（t）、内存消耗（m）、并行度（p），允许开发者根据目标平台精确平衡安全性与性能。</li>
+      </ul>
+      <p>Argon2 分为两个变体：Argon2d（抗 GPU 更强）和 Argon2i（抗侧信道攻击更强）。Argon2id 结合了两者优势，是目前推荐使用的变体。</p>
+
+      <h3>为什么 DeepSeal 选择 PBKDF2</h3>
+      <p>既然 Argon2 在安全性上有明显优势，为什么 DeepSeal 仍然选择 PBKDF2？这个决定基于三个实际考量：</p>
+      <ul>
+        <li><strong>跨平台兼容性</strong>：DeepSeal 需要在 macOS、Windows 和 Linux 三个平台上运行，并保持加密数据格式的互操作。PBKDF2 是几乎所有平台和语言的密码学库都原生支持的算法，而 Argon2 的原生支持在不同平台上参差不齐。引入 Argon2 意味着要么依赖第三方 C 库（增加构建复杂度和潜在的安全审计负担），要么用纯语言实现（性能无法保证）。</li>
+        <li><strong>经过 NIST 认证</strong>：PBKDF2 是 NIST SP 800-132 推荐的标准密钥派生函数。虽然 NIST 认证不代表绝对安全，但它意味着经过了广泛的安全审查和长期的实战验证。对于一款加密产品来说，选择被广泛审查的算法是一种保守但负责任的做法。</li>
+        <li><strong>100K 迭代在现代硬件上足够安全</strong>：PBKDF2-SHA256 在 100,000 次迭代下，单次派生在消费级 CPU 上需要约 100-200ms。以最常见的弱密码（8 位字母数字）为例，攻击者使用单块 RTX 4090 GPU 的暴力破解速度约为每秒 150 万次尝试，破解一个 8 位字母数字密码仍需约 600 年。对于大多数个人用户的威胁模型，这是足够的。</li>
+      </ul>
+
+      <h3>未来可能迁移到 Argon2 的条件</h3>
+      <p>我们没有排除未来迁移到 Argon2 的可能性。迁移条件包括：</p>
+      <ul>
+        <li>主流操作系统和密码学库（如 WebCrypto API、System Security.framework、CommonCrypto）原生支持 Argon2id。</li>
+        <li>GPU 计算能力的增长使 PBKDF2 在合理迭代次数下的安全裕度显著降低。</li>
+        <li>出现可靠的跨平台 Argon2 绑定库，经过独立安全审计。</li>
+      </ul>
+      <p>迁移时，我们会在数据库中记录每条记录使用的 KDF 类型，支持 PBKDF2 和 Argon2 并存，用户修改密码时自动升级到 Argon2，无需一次性迁移所有数据。</p>
+      <p>安全是持续演进的过程，不是一次性的选择。当条件成熟时，我们会毫不犹豫地升级。</p>
+    </div>
+  </div>
+</section>
+
+<footer class="footer"><div class="container"><div class="footer-bottom" style="border-top:none;padding-top:0"><span>© 2026 DeepSeal by HyperGrad</span><a href="blog.html" style="color:#818CF8">← 返回博客</a></div></div></footer>
+
+<script src="assets/js/main.js"></script>
+</body>
+</html>
