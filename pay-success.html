@@ -4,8 +4,6 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>支付结果 — DeepSeal</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Noto+Sans+SC:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="assets/css/style.css" />
   <style>
     .result-page{max-width:560px;margin:0 auto;padding:140px 24px 80px;text-align:center}
@@ -45,7 +43,6 @@
   <!-- Search engine verification (replace with actual codes) -->
   <meta name="baidu-site-verification" content="BAIDU_VERIFY_CODE" />
   <meta name="msvalidate.01" content="BING_VERIFY_CODE" />
-  <meta name="google-site-verification" content="GOOGLE_VERIFY_CODE" />
 
 
 <!-- Baidu Tongji -->
@@ -168,7 +165,7 @@ function renderPending() {
 }
 
 function renderSuccess(code, plan) {
-  const planText = plan === 'yearly' ? '1年订阅' : '1个月订阅';
+  const planText = plan === 'lifetime' ? '终身版（早鸟价 ¥199）' : plan === 'yearly' ? '1年订阅' : '1个月订阅';
   page.innerHTML = `
     <div class="result-icon success">✓</div>
     <h1>支付成功</h1>
