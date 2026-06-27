@@ -585,7 +585,7 @@ var _hmt = _hmt || [];
         </button>
         <div class="mac-dropdown-menu" id="macMenu">
           <a href="download/deepseal_0.1.0_aarch64.dmg" download="DeepSeal-ARM.dmg" onclick="_hmt.push(['_trackEvent','download','click','macos-arm'])">Apple 芯片 (M1/M2/M3/M4)</a>
-          <a href="download/deepseal_0.1.0_x64.dmg" download="DeepSeal-Intel.dmg" onclick="_hmt.push(['_trackEvent','download','click','macos-intel'])">Intel 芯片</a>
+          <a class="mac-intel-disabled" title="即将推出" onclick="this.textContent='Intel 版本即将推出';setTimeout(()=>this.textContent='Intel 芯片（即将推出）',2000);return false">Intel 芯片（即将推出）</a>
         </div>
       </div>
       <a href="#" class="btn btn-cta-ghost btn-lg" title="即将推出">
