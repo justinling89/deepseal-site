@@ -7,6 +7,36 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Noto+Sans+SC:wght@400;500;600;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="assets/css/style.css" />
+
+  <!-- SEO Meta -->
+  <meta name="description" content="加密块：在笔记中嵌入保险箱 — DeepSeal 核心功能详解，如何在文档中实现端到端加密的嵌入式保险箱。" />
+  <meta name="keywords" content="加密块,端到端加密,笔记加密,DeepSeal功能,嵌入式加密" />
+  <meta name="author" content="DeepSeal by 超维梯度科技" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="加密块：在笔记中嵌入保险箱 — DeepSeal 博客" />
+  <meta property="og:description" content="加密块：在笔记中嵌入保险箱 — DeepSeal 核心功能详解，如何在文档中实现端到端加密的嵌入式保险箱。" />
+  <meta property="og:url" content="https://hypergrad.cn/blog-encrypted-blocks.html" />
+  <meta property="og:site_name" content="DeepSeal" />
+  <meta property="og:locale" content="zh_CN" />
+
+  <!-- Search engine verification (replace with actual codes) -->
+  <meta name="baidu-site-verification" content="BAIDU_VERIFY_CODE" />
+  <meta name="msvalidate.01" content="BING_VERIFY_CODE" />
+  <meta name="google-site-verification" content="GOOGLE_VERIFY_CODE" />
+
+
+<!-- Baidu Tongji -->
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?BAIDU_TONGJI_ID";
+  var s = document.getElementsByTagName("script")[0];
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
 </head>
 <body>
 
@@ -39,12 +69,12 @@
     </div>
 
     <div class="about-content">
-      <h3>全笔记加密的局限</h3>
+      <h2>全笔记加密的局限</h2>
       <p>DeepSeal 从第一天起就支持全笔记加密——整条笔记从标题到内容全部加密存储。这对大部分场景已经足够，但我们发现一个反复出现的需求：你并不总是想加密整条笔记。</p>
       <p>想象一下这个场景：你在笔记里记录了一次旅行计划，其中提到了酒店的确认号和信用卡后四位。整条笔记 95% 的内容不需要加密，但那 5% 的敏感信息你绝对不想让旁人看到。如果用全笔记加密，你每次查看旅行计划都要解锁整条笔记；如果不加密，敏感信息就裸露在外。</p>
       <p>这就是全笔记加密的局限——它只有"全有"和"全无"两个选项。</p>
 
-      <h3>加密块的设计理念</h3>
+      <h2>加密块的设计理念</h2>
       <p>加密块（Encrypted Block）的设计理念很简单：段落级独立加密。</p>
       <p>在一条普通笔记中，你可以选中任意一段文字，将其转换为加密块。加密块在视觉上显示为模糊的占位区域，只有点击解锁后才会显示明文。每个加密块拥有自己独立的 DEK（数据加密密钥），与其他内容和加密块完全隔离。</p>
       <p>这意味着你可以：</p>
@@ -54,7 +84,7 @@
         <li>在日记中只加密最私密的部分，其他内容可以放心展示给朋友。</li>
       </ul>
 
-      <h3>使用场景</h3>
+      <h2>使用场景</h2>
       <p>加密块特别适合以下场景：</p>
       <ul>
         <li><strong>银行信息</strong>：记录银行卡号、CVV、网银密码，加密后只有你需要时才可见。</li>
@@ -63,7 +93,7 @@
         <li><strong>医疗记录</strong>：体检报告、诊断结果等高度隐私信息，加密后可安心存储。</li>
       </ul>
 
-      <h3>技术实现</h3>
+      <h2>技术实现</h2>
       <p>加密块的交互设计经过了反复打磨，兼顾安全与便捷：</p>
       <ul>
         <li><strong>点击解锁</strong>：单击加密块，输入主密码（或使用之前已验证的会话），DEK 被解密，明文显示。</li>
@@ -73,7 +103,7 @@
       </ul>
       <p>加密块使用与全笔记加密相同的 AES-256-GCM 算法，同样采用信封加密架构，安全等级完全一致。</p>
 
-      <h3>结语</h3>
+      <h2>结语</h2>
       <p>加密块不是全笔记加密的替代，而是补充。它给了你一种更精细的控制粒度——只加密需要加密的部分，让笔记的使用体验不再因为安全而妥协。</p>
       <p>安全不应该强迫你改变使用习惯，而应该融入你的习惯之中。加密块，就是这种理念的最新体现。</p>
     </div>

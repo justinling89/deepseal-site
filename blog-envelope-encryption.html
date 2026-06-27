@@ -7,6 +7,36 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Noto+Sans+SC:wght@400;500;600;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="assets/css/style.css" />
+
+  <!-- SEO Meta -->
+  <meta name="description" content="为什么信封加密是保护笔记的最佳方案 — 深入解析信封加密原理，以及 DeepSeal 如何用 DEK+KEK 双层密钥保护数据。" />
+  <meta name="keywords" content="信封加密,DEK,KEK,加密原理,密钥管理,DeepSeal加密" />
+  <meta name="author" content="DeepSeal by 超维梯度科技" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="为什么信封加密是保护笔记的最佳方案 — DeepSeal 博客" />
+  <meta property="og:description" content="为什么信封加密是保护笔记的最佳方案 — 深入解析信封加密原理，以及 DeepSeal 如何用 DEK+KEK 双层密钥保护数据。" />
+  <meta property="og:url" content="https://hypergrad.cn/blog-envelope-encryption.html" />
+  <meta property="og:site_name" content="DeepSeal" />
+  <meta property="og:locale" content="zh_CN" />
+
+  <!-- Search engine verification (replace with actual codes) -->
+  <meta name="baidu-site-verification" content="BAIDU_VERIFY_CODE" />
+  <meta name="msvalidate.01" content="BING_VERIFY_CODE" />
+  <meta name="google-site-verification" content="GOOGLE_VERIFY_CODE" />
+
+
+<!-- Baidu Tongji -->
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?BAIDU_TONGJI_ID";
+  var s = document.getElementsByTagName("script")[0];
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
 </head>
 <body>
 
@@ -39,12 +69,12 @@
     </div>
 
     <div class="about-content">
-      <h3>引言</h3>
+      <h2>引言</h2>
       <p>笔记工具里存了我们最敏感的信息——银行账号、密码、身份证号、医疗记录、私密日记。你可能认为这些数据已经"加密"了，但传统加密方案存在一个根本性问题：它假设你永远不会更换密码。</p>
       <p>当你修改主密码时，传统方案需要用新密码重新加密每一条笔记。如果你有 1000 条笔记，就要执行 1000 次重加密。不仅耗时，更危险的是——一旦中间出错，数据可能永久丢失。</p>
       <p>信封加密（Envelope Encryption）正是为解决这个难题而生。</p>
 
-      <h3>什么是信封加密</h3>
+      <h2>什么是信封加密</h2>
       <p>信封加密的核心思想来自一个简单的类比：你不会把每封信都锁进不同的保险箱，而是把信放进信封，再用一个保险箱锁住所有信封的钥匙。</p>
       <p>在技术实现上，它采用两层密钥模型：</p>
       <ul>
@@ -53,7 +83,7 @@
       </ul>
       <p>被 KEK 加密后的 DEK 就像被封在信封里——"信封加密"因此得名。</p>
 
-      <h3>为什么不直接用主密码加密</h3>
+      <h2>为什么不直接用主密码加密</h2>
       <p>直接用主密码加密所有数据看似简单，但会带来三个严重问题：</p>
       <ul>
         <li><strong>换密码就要重加密所有数据</strong>：修改密码后，必须用新密钥重加密每一条笔记。数百条笔记意味着数百次加密操作，任何一个失败都可能导致数据不可恢复。</li>
@@ -61,14 +91,14 @@
         <li><strong>无法灵活支持多密钥场景</strong>：如果你需要对不同笔记设置不同的访问权限（例如共享部分笔记），单一密钥模型根本无法支持。</li>
       </ul>
 
-      <h3>信封加密的优势</h3>
+      <h2>信封加密的优势</h2>
       <ul>
         <li><strong>换密码只需重加密 DEK</strong>：修改密码时，只需要用新 KEK 重新加密那条 256-bit 的 DEK，而不是整条笔记。无论笔记内容多长，重加密操作都是微秒级的。</li>
         <li><strong>每条笔记独立密钥隔离风险</strong>：即使某条笔记的 DEK 被攻破，攻击者也无法解密其他笔记。就像酒店每间房都有独立的房卡，丢一张卡不会暴露所有房间。</li>
         <li><strong>与 AWS KMS 同级别架构</strong>：信封加密不是小众方案。AWS KMS、Google Cloud KMS、Azure Key Vault 都采用信封加密作为核心密钥管理模型。DeepSeal 将企业级安全架构带给了个人用户。</li>
       </ul>
 
-      <h3>DeepSeal 的实现</h3>
+      <h2>DeepSeal 的实现</h2>
       <p>在 DeepSeal 中，信封加密的具体实现如下：</p>
       <ul>
         <li><strong>KEK 派生</strong>：主密码通过 PBKDF2 算法，经过 100,000 次迭代派生出 KEK。高迭代次数确保暴力破解在计算上不可行。</li>
@@ -77,7 +107,7 @@
       </ul>
       <p>这意味着你的主密码永远不会直接接触笔记内容，即使数据库文件被盗，没有主密码也无法解密任何 DEK，自然无法读取任何笔记。</p>
 
-      <h3>结语</h3>
+      <h2>结语</h2>
       <p>信封加密不是锦上添花，而是密码学工程中的最佳实践。它从根本上解决了密钥管理中最棘手的问题——密码轮换、密钥隔离、最小权限。当你的笔记里存着人生中最重要的信息时，值得用最可靠的架构去守护。</p>
       <p>DeepSeal 选择信封加密，是因为我们相信：安全不该是妥协，而该是默认。</p>
     </div>

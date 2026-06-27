@@ -7,6 +7,36 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Noto+Sans+SC:wght@400;500;600;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="assets/css/style.css" />
+
+  <!-- SEO Meta -->
+  <meta name="description" content="DeepSeal API 文档 — 命令行工具、SNX 导出格式、安全分享协议等技术文档。" />
+  <meta name="keywords" content="DeepSeal文档,API,CLI,SNX,开发者文档" />
+  <meta name="author" content="DeepSeal by 超维梯度科技" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="API 文档 — DeepSeal" />
+  <meta property="og:description" content="DeepSeal API 文档 — 命令行工具、SNX 导出格式、安全分享协议等技术文档。" />
+  <meta property="og:url" content="https://hypergrad.cn/docs.html" />
+  <meta property="og:site_name" content="DeepSeal" />
+  <meta property="og:locale" content="zh_CN" />
+
+  <!-- Search engine verification (replace with actual codes) -->
+  <meta name="baidu-site-verification" content="BAIDU_VERIFY_CODE" />
+  <meta name="msvalidate.01" content="BING_VERIFY_CODE" />
+  <meta name="google-site-verification" content="GOOGLE_VERIFY_CODE" />
+
+
+<!-- Baidu Tongji -->
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?BAIDU_TONGJI_ID";
+  var s = document.getElementsByTagName("script")[0];
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
 </head>
 <body>
 
@@ -70,7 +100,7 @@
     <p style="font-size:15px;color:var(--text-secondary);line-height:1.8;margin-bottom:48px">DeepSeal 目前提供 CLI 命令行工具和 SNX 加密文件格式。REST API 正在规划中。</p>
 
     <div class="about-content">
-      <h3>SNX 文件格式规范</h3>
+      <h2>SNX 文件格式规范</h2>
       <p>SNX 是 DeepSeal 的标准加密文件格式，基于 JSON 结构，完全开放可解析。文件扩展名为 <code style="background:var(--bg-code);padding:2px 6px;border-radius:4px;font-size:13px">.snx</code>。</p>
       <p>SNX 文件结构：</p>
       <pre class="encrypt-code" style="background:var(--bg-code);border:1px solid var(--border);border-radius:var(--radius-sm);padding:20px;margin:16px 0;font-family:var(--mono);font-size:13px;line-height:1.7;overflow-x:auto;color:var(--text-secondary)">{
@@ -102,7 +132,7 @@
         <li><strong>metadata</strong>：可选的元数据字段，不包含敏感信息</li>
       </ul>
 
-      <h3>命令行工具</h3>
+      <h2>命令行工具</h2>
       <p>DeepSeal 提供命令行工具 <code style="background:var(--bg-code);padding:2px 6px;border-radius:4px;font-size:13px">deepseal-cli</code>，支持加密、解密、导出和列表操作。</p>
 
       <p><strong>加密笔记</strong></p>
@@ -127,7 +157,7 @@
       <pre class="encrypt-code" style="background:var(--bg-code);border:1px solid var(--border);border-radius:var(--radius-sm);padding:16px 20px;margin:12px 0;font-family:var(--mono);font-size:13px;line-height:1.7;overflow-x:auto;color:var(--text-secondary)">$ deepseal-cli list \
   --notebook "Personal"</pre>
 
-      <h3>未来 API 路线</h3>
+      <h2>未来 API 路线</h2>
       <p>DeepSeal 计划在 2027 年推出 REST API，面向团队版用户，支持以下能力：</p>
       <ul>
         <li>团队密钥策略管理</li>

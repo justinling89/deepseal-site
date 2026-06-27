@@ -7,6 +7,36 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Noto+Sans+SC:wght@400;500;600;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="assets/css/style.css" />
+
+  <!-- SEO Meta -->
+  <meta name="description" content="DeepSeal 帮助中心。常见问题解答、使用指南、快捷键说明、故障排查等，助你快速上手。" />
+  <meta name="keywords" content="DeepSeal帮助,加密笔记教程,使用指南,常见问题,FAQ" />
+  <meta name="author" content="DeepSeal by 超维梯度科技" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="帮助中心 — DeepSeal" />
+  <meta property="og:description" content="DeepSeal 帮助中心。常见问题解答、使用指南、快捷键说明、故障排查等，助你快速上手。" />
+  <meta property="og:url" content="https://hypergrad.cn/help.html" />
+  <meta property="og:site_name" content="DeepSeal" />
+  <meta property="og:locale" content="zh_CN" />
+
+  <!-- Search engine verification (replace with actual codes) -->
+  <meta name="baidu-site-verification" content="BAIDU_VERIFY_CODE" />
+  <meta name="msvalidate.01" content="BING_VERIFY_CODE" />
+  <meta name="google-site-verification" content="GOOGLE_VERIFY_CODE" />
+
+
+<!-- Baidu Tongji -->
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?BAIDU_TONGJI_ID";
+  var s = document.getElementsByTagName("script")[0];
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
 </head>
 <body>
 
@@ -71,42 +101,42 @@
 
     <div class="blog-list">
       <div class="blog-card">
-        <h3>如何设置主密码？</h3>
+        <h2>如何设置主密码？</h2>
         <p>首次启动 DeepSeal 时，应用会引导你设置主密码。主密码是解锁所有加密内容的唯一凭证，请务必牢记。建议使用 12 位以上的混合字符密码，或使用密码短语（如一句有意义的话）以提高可记忆性和安全性。主密码不会存储在设备上，也无法通过网络传输。</p>
       </div>
 
       <div class="blog-card">
-        <h3>忘记主密码怎么办？</h3>
+        <h2>忘记主密码怎么办？</h2>
         <p> DeepSeal 采用零知识架构，我们不存储你的主密码，也无法帮您恢复。如果忘记主密码，你将无法解密已加密的内容。这是为了确保即使设备被盗，数据也无法被破解。建议将主密码记录在安全的物理位置（如纸质备忘录），或使用密码管理器存储。</p>
       </div>
 
       <div class="blog-card">
-        <h3>加密块是什么？</h3>
+        <h2>加密块是什么？</h2>
         <p>加密块（Encrypted Block）是 DeepSeal 的核心加密单元。你可以在笔记中选择性地将敏感段落标记为加密块，这些段落会被独立的 256-bit 密钥加密。未标记的部分保持明文，方便全文搜索和快速浏览。加密块在锁定状态下显示为不可读的密文，只有输入主密码解锁后才能查看原文。</p>
       </div>
 
       <div class="blog-card">
-        <h3>如何分享加密内容？</h3>
+        <h2>如何分享加密内容？</h2>
         <p>你可以将笔记导出为 SNX 加密文件，接收方使用 DeepSeal 导入并输入预设的共享密码即可解密。导出时可以设置独立的共享密码，不暴露你的主密码。协作编辑功能正在开发中，预计 2026 Q3 上线。</p>
       </div>
 
       <div class="blog-card">
-        <h3>如何导出加密笔记？</h3>
+        <h2>如何导出加密笔记？</h2>
         <p>DeepSeal 支持两种导出方式：<strong>加密导出</strong> — 导出为 SNX 格式文件，内容保持加密状态，需要密码才能解密；<strong>明文导出</strong> — 导出为 Markdown 文件，需要先解锁应用。建议优先使用加密导出以保护隐私。也可以通过 CLI 工具执行批量导出：<code style="background:var(--bg-code);padding:2px 6px;border-radius:4px;font-size:13px">deepseal-cli export --format snx</code></p>
       </div>
 
       <div class="blog-card">
-        <h3>支持哪些平台？</h3>
+        <h2>支持哪些平台？</h2>
         <p>目前 DeepSeal 支持以下桌面平台：Windows 10/11（x64 和 ARM64）、macOS 12+（Intel 和 Apple Silicon）、Linux（x64，支持 Ubuntu 20.04+ 和 Fedora 36+）。移动端（iOS / Android）正在开发中，预计 2026 Q4 发布。</p>
       </div>
 
       <div class="blog-card">
-        <h3>数据存在哪里？</h3>
+        <h2>数据存在哪里？</h2>
         <p>所有数据存储在你设备的本地文件系统中，使用 SQLite 加密数据库。DeepSeal 不会将任何数据上传到云端或远程服务器。你的加密密钥材料同样只存在于本地。即使选择未来开放同步功能，数据在传输过程中也会进行端到端加密，服务器无法读取。</p>
       </div>
 
       <div class="blog-card">
-        <h3>是否支持中文？</h3>
+        <h2>是否支持中文？</h2>
         <p>是的，DeepSeal 完整支持中文界面和中文内容加密。应用界面提供简体中文和 English 两种语言选项，加密引擎对 Unicode 文本完全兼容，中文内容加密后可正常解密还原。</p>
       </div>
     </div>

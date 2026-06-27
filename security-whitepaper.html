@@ -7,6 +7,36 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Noto+Sans+SC:wght@400;500;600;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="assets/css/style.css" />
+
+  <!-- SEO Meta -->
+  <meta name="description" content="DeepSeal 安全白皮书 — 三层加密架构、信封加密、AES-256-GCM、Argon2id 密钥派生，完整技术细节。" />
+  <meta name="keywords" content="安全白皮书,加密架构,AES-256,Argon2,信封加密,DeepSeal安全" />
+  <meta name="author" content="DeepSeal by 超维梯度科技" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="安全白皮书 — DeepSeal" />
+  <meta property="og:description" content="DeepSeal 安全白皮书 — 三层加密架构、信封加密、AES-256-GCM、Argon2id 密钥派生，完整技术细节。" />
+  <meta property="og:url" content="https://hypergrad.cn/security-whitepaper.html" />
+  <meta property="og:site_name" content="DeepSeal" />
+  <meta property="og:locale" content="zh_CN" />
+
+  <!-- Search engine verification (replace with actual codes) -->
+  <meta name="baidu-site-verification" content="BAIDU_VERIFY_CODE" />
+  <meta name="msvalidate.01" content="BING_VERIFY_CODE" />
+  <meta name="google-site-verification" content="GOOGLE_VERIFY_CODE" />
+
+
+<!-- Baidu Tongji -->
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?BAIDU_TONGJI_ID";
+  var s = document.getElementsByTagName("script")[0];
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
 </head>
 <body>
 
@@ -70,7 +100,7 @@
     <p style="font-size:13px;color:var(--text-muted);margin-bottom:48px">版本 1.0 · 最后更新 2026 年 6 月</p>
 
     <div class="about-content">
-      <h3>1. 加密架构概览</h3>
+      <h2>1. 加密架构概览</h2>
       <p>DeepSeal 采用信封加密（Envelope Encryption）三层模型，与 AWS KMS、Azure Key Vault、Google Cloud KMS 使用相同的密钥管理体系。</p>
       <p>三层架构由外到内分别是：</p>
       <ul>
@@ -80,7 +110,7 @@
       </ul>
       <p>这种分层设计的核心优势：更换主密码时，只需用新 KEK 重新加密 DEK，无需重加密所有笔记数据，时间复杂度从 O(n) 降至 O(1)。</p>
 
-      <h3>2. 密钥派生</h3>
+      <h2>2. 密钥派生</h2>
       <p>用户主密码通过 PBKDF2-HMAC-SHA256 算法派生根密钥（KEK），参数如下：</p>
       <ul>
         <li><strong>哈希函数</strong>：HMAC-SHA256</li>
@@ -91,7 +121,7 @@
       <p>100K 次迭代在当前硬件下生成一次约需 100-200ms，对正常登录体验影响极小，但对暴力破解构成显著计算壁垒 — 攻击者每尝试一个密码都需要重复同样的计算量。</p>
       <p>盐值确保即使两个用户使用相同的主密码，派生出的 KEK 也完全不同，防止彩虹表攻击。</p>
 
-      <h3>3. 数据加密</h3>
+      <h2>3. 数据加密</h2>
       <p>每条笔记使用独立的 DEK 进行 AES-256-GCM 加密：</p>
       <ul>
         <li><strong>算法</strong>：AES-256-GCM（Galois/Counter Mode）</li>
@@ -107,7 +137,7 @@
         <li>支持对单条笔记重新加密而不影响其他数据</li>
       </ul>
 
-      <h3>4. 存储安全</h3>
+      <h2>4. 存储安全</h2>
       <p>DeepSeal 使用本地 SQLite 数据库存储加密数据，存储内容包括：</p>
       <ul>
         <li><strong>加密后的 DEK</strong>：E(DEK, KEK) — 由 KEK 加密的 DEK 密文</li>
@@ -124,7 +154,7 @@
         <li>数据库文件本身不使用额外加密层，因为所有敏感数据已在应用层完成加密</li>
       </ul>
 
-      <h3>5. 密钥轮换</h3>
+      <h2>5. 密钥轮换</h2>
       <p>更换主密码时，DeepSeal 执行以下步骤：</p>
       <ul>
         <li>Step 1: 用户输入旧主密码，派生旧 KEK，解锁所有 DEK</li>
@@ -135,7 +165,7 @@
       </ul>
       <p>整个过程中，笔记密文不需要重新加密。由于信封加密的分层设计，密钥轮换的时间与笔记数量无关 — 无论你有多少条笔记，轮换操作都是常数时间完成。</p>
 
-      <h3>6. 安全假设与边界</h3>
+      <h2>6. 安全假设与边界</h2>
       <p>DeepSeal 的安全模型基于以下假设，用户应当了解：</p>
       <ul>
         <li><strong>主密码强度</strong>：安全性上限取决于主密码的熵。弱密码（如 "123456"）可被暴力破解。建议使用 12 位以上混合字符或密码短语。</li>

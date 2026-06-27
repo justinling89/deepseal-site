@@ -13,7 +13,7 @@
     .buy-page .subtitle{color:#64748b;margin-bottom:40px;font-size:16px}
     .step-label{font-size:13px;font-weight:600;color:#6366F1;text-transform:uppercase;letter-spacing:1px;margin-bottom:8px}
     .step-box{background:#fff;border:1.5px solid #e2e8f0;border-radius:12px;padding:24px;margin-bottom:32px}
-    .plan-cards{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+    .plan-cards{display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px}
     .plan-card{border:2px solid #e2e8f0;border-radius:12px;padding:24px;cursor:pointer;transition:all .2s;text-align:center;position:relative}
     .plan-card:hover{border-color:#6366F1;box-shadow:0 4px 16px rgba(99,102,241,0.12)}
     .plan-card.selected{border-color:#6366F1;background:#f5f3ff}
@@ -32,6 +32,36 @@
     .loading{display:inline-block;width:18px;height:18px;border:2px solid rgba(255,255,255,0.3);border-top-color:#fff;border-radius:50%;animation:spin .6s linear infinite}
     @keyframes spin{to{transform:rotate(360deg)}}
   </style>
+
+  <!-- SEO Meta -->
+  <meta name="description" content="购买 DeepSeal 专业版。早鸟价 ¥199 终身买断，或 ¥98/年订阅。解锁无限加密块、密码生成器等全部专业功能。" />
+  <meta name="keywords" content="DeepSeal购买,加密笔记专业版,密码管理器购买,DeepSeal价格,终身授权" />
+  <meta name="author" content="DeepSeal by 超维梯度科技" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="购买专业版 — DeepSeal" />
+  <meta property="og:description" content="购买 DeepSeal 专业版。早鸟价 ¥199 终身买断，或 ¥98/年订阅。解锁无限加密块、密码生成器等全部专业功能。" />
+  <meta property="og:url" content="https://hypergrad.cn/buy.html" />
+  <meta property="og:site_name" content="DeepSeal" />
+  <meta property="og:locale" content="zh_CN" />
+
+  <!-- Search engine verification (replace with actual codes) -->
+  <meta name="baidu-site-verification" content="BAIDU_VERIFY_CODE" />
+  <meta name="msvalidate.01" content="BING_VERIFY_CODE" />
+  <meta name="google-site-verification" content="GOOGLE_VERIFY_CODE" />
+
+
+<!-- Baidu Tongji -->
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?BAIDU_TONGJI_ID";
+  var s = document.getElementsByTagName("script")[0];
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
 </head>
 <body>
 
@@ -66,10 +96,15 @@
         <div class="price">¥12<small>/月</small></div>
         <div class="period">按月订阅</div>
       </div>
-      <div class="plan-card selected" data-plan="yearly" onclick="selectPlan('yearly')">
+      <div class="plan-card" data-plan="yearly" onclick="selectPlan('yearly')">
         <div class="badge">推荐</div>
         <div class="price">¥98<small>/年</small></div>
         <div class="period">年付省 ¥46</div>
+      </div>
+      <div class="plan-card" data-plan="lifetime" onclick="selectPlan('lifetime')">
+        <div class="badge" style="background:#f59e0b">早鸟价</div>
+        <div class="price">¥199<small>终身</small></div>
+        <div class="period">一次买断 · 永久使用</div>
       </div>
     </div>
   </div>
@@ -139,7 +174,20 @@
 // ====== 配置（部署后替换） ======
 const API_BASE = 'https://1258988434-ha6l3o6s59.ap-guangzhou.tencentscf.com';
 
-let selectedPlan = 'yearly';
+let selectedPlan = 'lifetime';
+
+// URL 参数自动选 plan，如 buy.html?plan=lifetime
+(function() {
+  const params = new URLSearchParams(window.location.search);
+  const plan = params.get('plan');
+  if (plan && ['monthly', 'yearly', 'lifetime'].includes(plan)) {
+    selectedPlan = plan;
+  }
+  // 初始化选中状态
+  document.querySelectorAll('.plan-card').forEach(el => {
+    el.classList.toggle('selected', el.dataset.plan === selectedPlan);
+  });
+})();
 
 function selectPlan(plan) {
   selectedPlan = plan;

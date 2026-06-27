@@ -7,6 +7,36 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Noto+Sans+SC:wght@400;500;600;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="assets/css/style.css" />
+
+  <!-- SEO Meta -->
+  <meta name="description" content="零信任架构下的个人数据保护 — 从企业零信任到个人实践，如何用零信任原则守护隐私。" />
+  <meta name="keywords" content="零信任架构,数据保护,隐私,Zero Trust,安全架构" />
+  <meta name="author" content="DeepSeal by 超维梯度科技" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="零信任架构下的个人数据保护 — DeepSeal 博客" />
+  <meta property="og:description" content="零信任架构下的个人数据保护 — 从企业零信任到个人实践，如何用零信任原则守护隐私。" />
+  <meta property="og:url" content="https://hypergrad.cn/blog-zero-trust.html" />
+  <meta property="og:site_name" content="DeepSeal" />
+  <meta property="og:locale" content="zh_CN" />
+
+  <!-- Search engine verification (replace with actual codes) -->
+  <meta name="baidu-site-verification" content="BAIDU_VERIFY_CODE" />
+  <meta name="msvalidate.01" content="BING_VERIFY_CODE" />
+  <meta name="google-site-verification" content="GOOGLE_VERIFY_CODE" />
+
+
+<!-- Baidu Tongji -->
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?BAIDU_TONGJI_ID";
+  var s = document.getElementsByTagName("script")[0];
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
 </head>
 <body>
 
@@ -39,7 +69,7 @@
     </div>
 
     <div class="about-content">
-      <h3>云端数据泄露已成常态</h3>
+      <h2>云端数据泄露已成常态</h2>
       <p>过去几年，我们见证了太多令人触目惊心的数据泄露事件：</p>
       <ul>
         <li>2024 年，某知名云笔记服务商因服务器配置错误，导致数百万用户的笔记内容在互联网上公开暴露长达数周。</li>
@@ -48,7 +78,7 @@
       </ul>
       <p>这些事件的共同特点令人不安：你的数据存放在别人的服务器上，而你对安全措施没有任何控制权。一旦服务商出问题，你能做的只有祈祷自己的数据不在泄露范围内。</p>
 
-      <h3>零信任的核心原则</h3>
+      <h2>零信任的核心原则</h2>
       <p>零信任（Zero Trust）并非某一款产品或技术，而是一种安全理念。它起源于企业网络安全领域，由 Forrester Research 在 2010 年提出，核心原则只有三条：</p>
       <ul>
         <li><strong>永不信任，始终验证</strong>：不因为请求来自内网就自动放行，每一次访问都需要身份验证。在企业网络中，这意味着即使你已经连上了公司 WiFi，访问内部系统仍然需要重新认证。</li>
@@ -57,7 +87,7 @@
       </ul>
       <p>这三条原则对企业有效，对个人数据同样适用。</p>
 
-      <h3>DeepSeal 的零信任实现</h3>
+      <h2>DeepSeal 的零信任实现</h2>
       <p>DeepSeal 将零信任原则落地到个人数据保护的每一个层面：</p>
       <ul>
         <li><strong>无服务器 = 无攻击面</strong>：DeepSeal 不存储你的任何数据在云端。所有数据只存在于你的设备上。没有服务器意味着没有远程攻击面——攻击者无法入侵一个不存在的东西。这直接消灭了云端泄露这类最常见的威胁。</li>
@@ -65,7 +95,7 @@
         <li><strong>独立 DEK = 零信任内部隔离</strong>：即使攻击者物理接触了你的设备并提取了数据库文件，每条笔记的 DEK 都是独立加密的。攻破一条笔记的 DEK 不会帮助攻破下一条——这正是"假设已被入侵"原则的体现。攻击者必须为每一条笔记独立暴力破解，成本随笔记数量线性增长。</li>
       </ul>
 
-      <h3>你的数据只属于你</h3>
+      <h2>你的数据只属于你</h2>
       <p>零信任的终局不是建造更坚固的墙，而是消除被攻击的价值。当你的数据从未离开你的设备，当你的笔记只有你自己能解密，攻击者就没有目标可以瞄准。</p>
       <p>DeepSeal 的零信任不是功能列表上的一行字，而是从架构层面做出的根本选择：我们选择不拥有你的数据，因为只有不属于我们的东西，才不会被我们从你身边夺走。</p>
     </div>

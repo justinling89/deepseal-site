@@ -28,6 +28,36 @@
     .guide-steps h3{font-size:14px;font-weight:700;color:#6366F1;margin-bottom:12px}
     .guide-steps ol{margin:0;padding-left:20px;color:#475569;font-size:14px;line-height:2}
   </style>
+
+  <!-- SEO Meta -->
+  <meta name="description" content="DeepSeal 支付结果页。购买成功后在此获取激活码，完成专业版激活。" />
+  <meta name="keywords" content="DeepSeal支付,激活码,专业版激活" />
+  <meta name="author" content="DeepSeal by 超维梯度科技" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="支付结果 — DeepSeal" />
+  <meta property="og:description" content="DeepSeal 支付结果页。购买成功后在此获取激活码，完成专业版激活。" />
+  <meta property="og:url" content="https://hypergrad.cn/pay-success.html" />
+  <meta property="og:site_name" content="DeepSeal" />
+  <meta property="og:locale" content="zh_CN" />
+
+  <!-- Search engine verification (replace with actual codes) -->
+  <meta name="baidu-site-verification" content="BAIDU_VERIFY_CODE" />
+  <meta name="msvalidate.01" content="BING_VERIFY_CODE" />
+  <meta name="google-site-verification" content="GOOGLE_VERIFY_CODE" />
+
+
+<!-- Baidu Tongji -->
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?BAIDU_TONGJI_ID";
+  var s = document.getElementsByTagName("script")[0];
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
 </head>
 <body>
 
@@ -132,7 +162,7 @@ async function main() {
 function renderPending() {
   page.innerHTML = `
     <div class="result-icon pending"><span class="spinner"></span></div>
-    <h1>等待支付确认</h1>
+    <h2>等待支付确认</h2>
     <p class="desc">正在查询支付结果，请稍候...</p>
   `;
 }
@@ -152,7 +182,7 @@ function renderSuccess(code, plan) {
       <a href="index.html" class="btn-back">返回首页</a>
     </div>
     <div class="guide-steps">
-      <h3>如何激活</h3>
+      <h2>如何激活</h2>
       <ol>
         <li>复制上方激活码</li>
         <li>打开 DeepSeal 应用</li>
@@ -166,7 +196,7 @@ function renderSuccess(code, plan) {
 function renderFail(msg) {
   page.innerHTML = `
     <div class="result-icon fail">✕</div>
-    <h1>支付未完成</h1>
+    <h2>支付未完成</h2>
     <p class="desc">${msg}</p>
     <div>
       <a href="buy.html" class="btn-copy" style="text-decoration:none">重新购买</a>
