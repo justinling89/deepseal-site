@@ -535,6 +535,7 @@ var _hmt = _hmt || [];
         <div class="pricing-badge">推荐</div>
         <div class="pricing-name">专业版</div>
         <div class="pricing-price"><span class="pricing-amount">¥98</span><span class="pricing-period">/年（约¥8.2/月）</span></div>
+        <p style="font-size:12px;color:#6366F1;margin:-8px 0 8px;text-align:center"><a href="buy.html?plan=monthly" style="color:inherit;text-decoration:underline">也可 ¥12/月 按月订阅</a></p>
         <ul class="pricing-list">
           <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#10B981" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg><strong>无限</strong>笔记 & 笔记本</li>
           <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#10B981" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg><strong>无限</strong>加密块</li>
@@ -545,7 +546,7 @@ var _hmt = _hmt || [];
           <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#10B981" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>文件安全扫描</li>
           <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#10B981" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>HTML 安全报告导出</li>
         </ul>
-        <a href="buy.html" class="btn btn-primary btn-block">立即升级</a>
+        <a href="buy.html?plan=yearly" class="btn btn-primary btn-block">立即升级</a>
       </div>
       <div class="pricing-card" style="border-color:#f59e0b">
         <div class="pricing-badge" style="background:#f59e0b">早鸟价</div>
@@ -573,19 +574,26 @@ var _hmt = _hmt || [];
     <p style="color:rgba(255,255,255,0.75);margin-bottom:40px;font-size:17px">30 秒完成安装，无需注册，无需联网</p>
     <div class="cta-buttons">
       <a href="download/deepseal_0.1.0_x64-setup.exe" download="DeepSeal-Setup-x64.exe" class="btn btn-cta-white btn-lg" onclick="_hmt.push(['_trackEvent','download','click','windows'])">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M0 3.449L9.75 2.1v9.451H0m10.949-9.602L24 0v11.4H10.949M0 12.6h9.75v9.451L0 20.699M10.949 12.6H24V24l-12.9-1.801"/></svg>
         Windows
       </a>
-      <a href="download/deepseal_0.1.0_aarch64.dmg" download="DeepSeal-Setup-ARM.dmg" class="btn btn-cta-white btn-lg" onclick="_hmt.push(['_trackEvent','download','click','macos'])">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><path d="M12 2a15.3 15.3 0 0 0-4 10 15.3 15.3 0 0 0 4 10"/></svg>
-        macOS
-      </a>
+      <div class="mac-dropdown-wrap">
+        <button class="btn btn-cta-white btn-lg mac-dropdown-btn" onclick="toggleMacMenu()" id="macBtn">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11"/></svg>
+          macOS
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
+        </button>
+        <div class="mac-dropdown-menu" id="macMenu">
+          <a href="download/deepseal_0.1.0_aarch64.dmg" download="DeepSeal-ARM.dmg" onclick="_hmt.push(['_trackEvent','download','click','macos-arm'])">Apple 芯片 (M1/M2/M3/M4)</a>
+          <a href="download/deepseal_0.1.0_x64.dmg" download="DeepSeal-Intel.dmg" onclick="_hmt.push(['_trackEvent','download','click','macos-intel'])">Intel 芯片</a>
+        </div>
+      </div>
       <a href="#" class="btn btn-cta-ghost btn-lg" title="即将推出">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/></svg>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12.504 0c-.155 0-.311.015-.466.046C9.95.584 8.682 2.691 9.1 5.187c.352 2.103 1.981 3.74 4.04 3.844.147.007.293.01.437.01 2.4 0 4.176-1.893 4.372-4.36.09-.717-.096-2.44-.828-3.368C16.166.636 14.525 0 12.504 0zM15.26 24c1.566 0 2.6-.744 3.488-2.055.94-1.39 1.327-3.003 1.327-3.003s-2.2-.676-3.36-2.565c-1.147-1.87-.78-4.11-.78-4.11s-1.39.215-2.535 1.33c-.94.914-1.52 2.24-1.52 3.7 0 2.27 1.236 3.974 2.01 5.32.39.676.81 1.38 1.37 1.38z"/></svg>
         Linux
       </a>
     </div>
-    <p style="font-size:13px;color:rgba(255,255,255,0.4);margin-top:20px">v1.0 · 30 天全功能试用 · 无需信用卡</p>
+    <p style="font-size:13px;color:rgba(255,255,255,0.4);margin-top:20px">v1.0 · 30 天全功能试用 · 无需信用卡 · Windows 10+ / macOS 13+</p>
   </div>
 </section>
 
@@ -647,6 +655,10 @@ var _hmt = _hmt || [];
 </footer>
 
 <script src="assets/js/main.js"></script>
+<script>
+function toggleMacMenu(){var e=document.getElementById("macMenu"),t=document.getElementById("macBtn");e.classList.toggle("open"),t.setAttribute("aria-expanded",e.classList.contains("open"))}
+document.addEventListener("click",function(e){var m=document.getElementById("macMenu"),b=document.getElementById("macBtn");if(m&&b&&!b.contains(e.target)&&!m.contains(e.target))m.classList.remove("open")});
+</script>
 
 <!-- Back to Top -->
 <button class="backtop" id="backTop" title="回到顶部">↑</button>
