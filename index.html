@@ -484,22 +484,22 @@ var _hmt = _hmt || [];
 
     <div class="cases-grid">
       <div class="case-card">
-        <div class="case-top"><span class="case-logo">某律所</span><span class="case-tag">法律行业</span></div>
+        <div class="case-top"><span class="case-logo">广东某知名律所</span><span class="case-tag">法律行业</span></div>
         <p>"客户委托文件和诉讼策略是核心资产。DeepSeal 的加密块让合伙人之间共享机密有了安全通道，配合 SNSHR1 分享，密码解密、阅后即删。"</p>
         <div class="case-bottom"><span>信息安全负责人</span><span class="case-stat">80+ 名律师 · 10,000+ 加密文件</span></div>
       </div>
       <div class="case-card">
-        <div class="case-top"><span class="case-logo">某量化</span><span class="case-tag">金融行业</span></div>
+        <div class="case-top"><span class="case-logo">上海市某量化私募</span><span class="case-tag">金融行业</span></div>
         <p>"交易策略模型和风控参数是公司命脉。DeepSeal 的离线架构完全满足金融合规要求，SNX 加密导出让我们安全地在终端间迁移策略配置。"</p>
         <div class="case-bottom"><span>合规总监</span><span class="case-stat">40+ 人团队 · 3,000+ 加密笔记</span></div>
       </div>
       <div class="case-card">
-        <div class="case-top"><span class="case-logo">某半导体</span><span class="case-tag">芯片行业</span></div>
+        <div class="case-top"><span class="case-logo">深圳市某半导体设计公司</span><span class="case-tag">芯片行业</span></div>
         <p>"芯片设计文档涉及商业机密，不能用云服务。DeepSeal 的本地化架构和信封加密完美契合我们的安全策略，体检功能还发现了文件传输风险点。"</p>
         <div class="case-bottom"><span>CTO</span><span class="case-stat">200+ 名工程师 · 25,000+ 加密块</span></div>
       </div>
       <div class="case-card">
-        <div class="case-top"><span class="case-logo">某临床</span><span class="case-tag">医疗行业</span></div>
+        <div class="case-top"><span class="case-logo">北京市某临床研究机构</span><span class="case-tag">医疗行业</span></div>
         <p>"患者数据受双重法规约束。加密块让我们在同一篇笔记中混排公开信息与受保护数据，只有授权人员才能解锁查看，合规又高效。"</p>
         <div class="case-bottom"><span>数据合规官</span><span class="case-stat">150+ 名研究员 · 8,000+ 加密笔记</span></div>
       </div>
@@ -573,10 +573,17 @@ var _hmt = _hmt || [];
     <h2 class="section-title" style="margin-bottom:12px;color:#fff">现在开始，掌控你的数据</h2>
     <p style="color:rgba(255,255,255,0.75);margin-bottom:40px;font-size:17px">30 秒完成安装，无需注册，无需联网</p>
     <div class="cta-buttons">
-      <a href="download/deepseal_0.1.0_x64-setup.exe" download="DeepSeal-Setup-x64.exe" class="btn btn-cta-white btn-lg" onclick="_hmt.push(['_trackEvent','download','click','windows'])">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M0 3.449L9.75 2.1v9.451H0m10.949-9.602L24 0v11.4H10.949M0 12.6h9.75v9.451L0 20.699M10.949 12.6H24V24l-12.9-1.801"/></svg>
-        Windows
-      </a>
+      <div class="win-dropdown-wrap">
+        <button class="btn btn-cta-white btn-lg win-dropdown-btn" onclick="toggleWinMenu()" id="winBtn">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M0 3.449L9.75 2.1v9.451H0m10.949-9.602L24 0v11.4H10.949M0 12.6h9.75v9.451L0 20.699M10.949 12.6H24V24l-12.9-1.801"/></svg>
+          Windows
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
+        </button>
+        <div class="win-dropdown-menu" id="winMenu">
+          <a href="download/deepseal_0.1.0_x64-setup.exe" download="DeepSeal-x64.exe" onclick="_hmt.push(['_trackEvent','download','click','windows-x64'])">64 位（推荐，适用大多数电脑）</a>
+          <a href="download/deepseal_0.1.0_x86-setup.exe" download="DeepSeal-x86.exe" onclick="_hmt.push(['_trackEvent','download','click','windows-x86'])">32 位（老旧电脑）</a>
+        </div>
+      </div>
       <div class="mac-dropdown-wrap">
         <button class="btn btn-cta-white btn-lg mac-dropdown-btn" onclick="toggleMacMenu()" id="macBtn">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11"/></svg>
@@ -657,7 +664,8 @@ var _hmt = _hmt || [];
 <script src="assets/js/main.js"></script>
 <script>
 function toggleMacMenu(){var e=document.getElementById("macMenu"),t=document.getElementById("macBtn");e.classList.toggle("open"),t.setAttribute("aria-expanded",e.classList.contains("open"))}
-document.addEventListener("click",function(e){var m=document.getElementById("macMenu"),b=document.getElementById("macBtn");if(m&&b&&!b.contains(e.target)&&!m.contains(e.target))m.classList.remove("open")});
+function toggleWinMenu(){var e=document.getElementById("winMenu"),t=document.getElementById("winBtn");e.classList.toggle("open"),t.setAttribute("aria-expanded",e.classList.contains("open"))}
+document.addEventListener("click",function(e){var m=document.getElementById("macMenu"),b=document.getElementById("macBtn");if(m&&b&&!b.contains(e.target)&&!m.contains(e.target))m.classList.remove("open");var w=document.getElementById("winMenu"),v=document.getElementById("winBtn");if(w&&v&&!v.contains(e.target)&&!w.contains(e.target))w.classList.remove("open")});
 </script>
 
 <!-- Back to Top -->
